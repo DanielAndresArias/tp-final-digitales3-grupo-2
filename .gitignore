@@ -1,0 +1,21 @@
+# Build folders
+Debug/
+Release/
+tp-final-digitales3-grupo-2 LinkServer Debug.launch
+
+# Generated binaries
+*.axf
+*.bin
+*.hex
+*.map
+*.lst
+
+# Logs
+*.log
+
+# Eclipse / MCUXpresso metadata
+.metadata/
+
+# OS files
+.DS_Store
+Thumbs.db
