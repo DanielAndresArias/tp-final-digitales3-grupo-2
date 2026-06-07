@@ -1,44 +1,71 @@
-#include "lpc17xx_gpio.h"
 #include "lpc17xx_pinsel.h"
+#include "lpc17xx_gpio.h"
 #include "lpc17xx_systick.h"
+#include "lpc17xx_adc.h"
 
-static int pos_secuencia = 0;
-static uint8_t secuencia[8] = {
-	1,
-	3,
-	2,
-	6,
-	4,
-	12,
-	8,
-	9
-};
+static uint32_t time_ms=0;
+static uint16_t adcValue=0;
+static uint16_t valor=0;
 
-void configStepMotorPins();
+void configGPIO();
+void configADC();
 
 int main(void) {
-	configStepMotorPins();
-	// SysTick Timer 1 [ms]
+	NVIC_SetPriority(SysTick_IRQn, 0);
+	configGPIO();
+	configADC();
 	SysTick_Config(99999);
-	while(1){}
+    while(1) {
+    }
     return 0 ;
 }
 
-void configStepMotorPins() {
-	PINSEL_CFG_T pinselCfg = {
-			PORT_0,
-			0,
-			PINSEL_FUNC_00,
-			0,
-			0,
-	};
+void configGPIO() {
+	PINSEL_CFG_T pinCfg = {0};
+	pinCfg.func = PINSEL_FUNC_00;
+	pinCfg.pin = PIN_26;
+	pinCfg.port = PORT_3;
 
-	PINSEL_ConfigMultiplePins(&pinselCfg, (15<<6));
-	GPIO_SetDir(PORT_0, (15<<6), GPIO_OUTPUT);
-	GPIO_ClearPins(PORT_0, (15<<6));
+	PINSEL_ConfigPin(&pinCfg);
+
+	GPIO_SetDir(PORT_3, (1<<PIN_26), GPIO_OUTPUT);
+	GPIO_ClearPins(PORT_3, (1<<PIN_26));
+}
+
+void configADC(){
+	ADC_Init(10000);
+	ADC_PowerUp();
+	ADC_PinConfig(ADC_CHANNEL_0);
+	ADC_ChannelEnable(ADC_CHANNEL_0);
+	ADC_BurstEnable();
+	ADC_StartCmd(ADC_START_CONTINUOUS);
+	ADC_IntEnable(ADC_INT_CH0);
+	NVIC_EnableIRQ(ADC_IRQn);
 }
 
 void SysTick_Handler() {
-	GPIO_WriteValue(PORT_0, (secuencia[pos_secuencia]<<6));
-	pos_secuencia=(pos_secuencia+1)%8;
+	time_ms++;
+
+	if (time_ms/500%2) {
+		GPIO_ClearPins(PORT_3, (1<<PIN_26));
+	} else {
+		GPIO_SetPins(PORT_3, (1<<PIN_26));
+	}
+}
+
+void ADC_IRQHandler(void) {
+	adcValue=ADC_ChannelGetData(ADC_CHANNEL_0);
+
+	if(adcValue<=1024){
+		valor = 500;
+	}
+	else if(adcValue<=2048){
+		valor = 250;
+	}
+	else if(adcValue<=3072){
+		valor = 100;
+	}
+	else{
+		valor = 5;
+	}
 }
