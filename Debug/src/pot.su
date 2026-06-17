@@ -1,0 +1,2 @@
+../src/pot.c:26:6:pot_init	8	static
+../src/pot.c:33:10:pot_get_speed	16	static

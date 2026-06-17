@@ -1,0 +1,5 @@
+C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\inc/core_cm3.h:1012:22:NVIC_SetPriority	16	static
+../src/limit_switches.c:22:6:limits_init	16	static
+../src/limit_switches.c:40:9:limit_pressed	16	static
+../src/limit_switches.c:47:6:EINT0_IRQHandler	8	static
+../src/limit_switches.c:52:6:EINT1_IRQHandler	8	static
