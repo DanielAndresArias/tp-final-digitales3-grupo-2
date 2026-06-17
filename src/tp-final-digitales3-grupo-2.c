@@ -1,71 +1,138 @@
+/*
+ * Control de motor paso a paso NEMA17 con driver A4988 en LPC1769.
+ *
+ * - Genera los pasos desde el SysTick (base de tiempo de 100 us).
+ * - Usa una rampa trapezoidal: arranca lento, acelera hasta una
+ *   velocidad de crucero, la mantiene y desacelera antes de frenar.
+ *   Esto evita que el motor pierda pasos al arrancar/frenar de golpe.
+ *
+ * Mecanica: varilla roscada de 1 mm/vuelta + NEMA17 de 200 pasos/vuelta
+ * en PASO COMPLETO (MS1/MS2/MS3 a masa)  =>  200 pasos = 1 mm.
+ */
+
 #include "lpc17xx_pinsel.h"
 #include "lpc17xx_gpio.h"
 #include "lpc17xx_systick.h"
-#include "lpc17xx_adc.h"
 
-static uint32_t time_ms=0;
-static uint16_t adcValue=0;
-static uint16_t valor=0;
+/* ---------- Conexiones ---------- */
+#define STEP_PORT   PORT_3
+#define STEP_PIN    PIN_26          /* pin STEP del A4988 */
+#define DIR_PORT    PORT_0
+#define DIR_PIN     PIN_0           /* pin DIR del A4988 (elegi uno libre) */
 
-void configGPIO();
-void configADC();
+/* ---------- Parametros de la rampa ---------- */
+#define TICK_HZ     10000u          /* 1 tick = 100 us (ver SysTick_Config) */
+#define V_START     150          /* velocidad de arranque (pasos/s) ~45 rpm  */
+#define V_MAX       2000          /* velocidad de crucero  (pasos/s) ~150 rpm */
+#define ACCEL       1000         /* aceleracion (pasos/s^2)                   */
+
+/* ---------- Conversion distancia <-> pasos ---------- */
+#define STEPS_PER_MM   200          /* 200 pasos/vuelta * 1 vuelta/mm */
+#define MM_TO_STEPS(mm)  ((int32_t)((mm) * STEPS_PER_MM))
+
+/* ---------- Estado del generador de pasos (lo toca la ISR) ---------- */
+static volatile int32_t  stepsToGo  = 0;   /* pasos que faltan del movimiento  */
+static volatile int32_t  stepsDone  = 0;   /* pasos ya dados en el movimiento   */
+static volatile int32_t  accelSteps = 0;   /* pasos que tardo en llegar a V_MAX */
+static volatile float    vel        = 0;   /* velocidad actual (pasos/s)        */
+static volatile uint32_t interval   = 0;   /* ticks entre pasos                 */
+static volatile uint32_t tickCnt    = 0;
+static volatile uint8_t  pulseHigh  = 0;
+static volatile uint8_t  decel      = 0;
+
+/* ---------- Prototipos ---------- */
+void configGPIO(void);
+void moveSteps(int32_t n, uint8_t dir);
 
 int main(void) {
-	NVIC_SetPriority(SysTick_IRQn, 0);
-	configGPIO();
-	configADC();
-	SysTick_Config(99999);
-    while(1) {
+    NVIC_SetPriority(SysTick_IRQn, 0);
+    configGPIO();
+
+    /* Tick de 100 us, independiente del reloj real (CCLK = 100 MHz aca).
+       SystemCoreClock/10000 = 10000 -> SysTick interrumpe cada 100 us. */
+    SysTick_Config(SystemCoreClock / 10000);
+
+    /* --- Demo: va y vuelve 10 mm para probar --- */
+    uint8_t dir = 1;
+    while (1) {
+        if (stepsToGo == 0) {                       /* termino el movimiento anterior */
+            for (volatile uint32_t d = 0; d < 2000000; d++) { }   /* pausa simple */
+            moveSteps(MM_TO_STEPS(150), dir);        /* mover 10 mm */
+            dir ^= 1;                               /* alternar el sentido */
+        }
     }
-    return 0 ;
+    return 0;
 }
 
-void configGPIO() {
-	PINSEL_CFG_T pinCfg = {0};
-	pinCfg.func = PINSEL_FUNC_00;
-	pinCfg.pin = PIN_26;
-	pinCfg.port = PORT_3;
+/* Configura STEP y DIR como salidas GPIO. */
+void configGPIO(void) {
+    PINSEL_CFG_T pinCfg = {0};
+    pinCfg.func = PINSEL_FUNC_00;
 
-	PINSEL_ConfigPin(&pinCfg);
+    /* STEP */
+    pinCfg.port = STEP_PORT;
+    pinCfg.pin  = STEP_PIN;
+    PINSEL_ConfigPin(&pinCfg);
+    GPIO_SetDir(STEP_PORT, (1 << STEP_PIN), GPIO_OUTPUT);
+    GPIO_ClearPins(STEP_PORT, (1 << STEP_PIN));
 
-	GPIO_SetDir(PORT_3, (1<<PIN_26), GPIO_OUTPUT);
-	GPIO_ClearPins(PORT_3, (1<<PIN_26));
+    /* DIR */
+    pinCfg.port = DIR_PORT;
+    pinCfg.pin  = DIR_PIN;
+    PINSEL_ConfigPin(&pinCfg);
+    GPIO_SetDir(DIR_PORT, (1 << DIR_PIN), GPIO_OUTPUT);
+    GPIO_ClearPins(DIR_PORT, (1 << DIR_PIN));
 }
 
-void configADC(){
-	ADC_Init(10000);
-	ADC_PowerUp();
-	ADC_PinConfig(ADC_CHANNEL_0);
-	ADC_ChannelEnable(ADC_CHANNEL_0);
-	ADC_BurstEnable();
-	ADC_StartCmd(ADC_START_CONTINUOUS);
-	ADC_IntEnable(ADC_INT_CH0);
-	NVIC_EnableIRQ(ADC_IRQn);
+/* Arranca un movimiento de n pasos. dir = 1 o 0 segun el sentido de giro. */
+void moveSteps(int32_t n, uint8_t dir) {
+    if (dir) GPIO_SetPins(DIR_PORT, (1 << DIR_PIN));
+    else     GPIO_ClearPins(DIR_PORT, (1 << DIR_PIN));
+
+    stepsDone  = 0;
+    accelSteps = 0;
+    decel      = 0;
+    vel        = V_START;
+    interval   = (uint32_t)(TICK_HZ / V_START);
+    tickCnt    = 0;
+    stepsToGo  = n;                 /* esto "dispara" el movimiento */
 }
 
-void SysTick_Handler() {
-	time_ms++;
+void SysTick_Handler(void) {
+    /* Bajar STEP un tick despues de subirlo => pulso de 100 us
+       (de sobra para el A4988, que pide minimo ~1 us). */
+    if (pulseHigh) {
+        GPIO_ClearPins(STEP_PORT, (1 << STEP_PIN));
+        pulseHigh = 0;
+    }
 
-	if (time_ms/500%2) {
-		GPIO_ClearPins(PORT_3, (1<<PIN_26));
-	} else {
-		GPIO_SetPins(PORT_3, (1<<PIN_26));
-	}
-}
+    if (stepsToGo <= 0)        return;   /* no hay movimiento en curso */
+    if (++tickCnt < interval)  return;   /* todavia no toca dar el paso */
+    tickCnt = 0;
 
-void ADC_IRQHandler(void) {
-	adcValue=ADC_ChannelGetData(ADC_CHANNEL_0);
+    /* Flanco de subida en STEP = un paso */
+    GPIO_SetPins(STEP_PORT, (1 << STEP_PIN));
+    pulseHigh = 1;
+    stepsDone++;
+    stepsToGo--;
 
-	if(adcValue<=1024){
-		valor = 500;
-	}
-	else if(adcValue<=2048){
-		valor = 250;
-	}
-	else if(adcValue<=3072){
-		valor = 100;
-	}
-	else{
-		valor = 5;
-	}
+    /* Actualizar la velocidad segun la fase de la rampa */
+    if (decel) {                                /* deceleracion */
+        vel -= ACCEL / vel;
+        if (vel < V_START) vel = V_START;
+    }
+    else if (vel < V_MAX) {                     /* aceleracion */
+        if (stepsToGo <= stepsDone) {           /* movimiento corto: freno en el medio */
+            decel = 1;
+        } else {
+            vel += ACCEL / vel;
+            if (vel >= V_MAX) { vel = V_MAX; accelSteps = stepsDone; }
+        }
+    }
+    else {                                      /* crucero */
+        if (stepsToGo <= accelSteps) decel = 1; /* empezar a frenar (simetrico) */
+    }
+
+    interval = (uint32_t)(TICK_HZ / vel);
+    if (interval < 2) interval = 2;             /* garantiza que el pulso baje */
 }
