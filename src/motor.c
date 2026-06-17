@@ -1,0 +1,217 @@
+/*
+ * motor.c
+ * Generador de pasos con rampa trapezoidal para NEMA17 + A4988.
+ *
+ * Arranca lento (V_START), acelera hasta una velocidad de crucero (V_MAX),
+ * la mantiene y desacelera antes de frenar. Asi el motor no pierde pasos al
+ * arrancar/frenar de golpe.
+ *
+ * Ademas lleva un contador de posicion absoluta (en pasos, con signo) que la
+ * ISR actualiza en cada paso, y un modo de "jog" a velocidad constante para el
+ * homing.
+ */
+
+#include "motor.h"
+#include "limit_switches.h"
+
+#include "lpc17xx_pinsel.h"
+#include "lpc17xx_gpio.h"
+#include "lpc17xx_systick.h"
+
+/* ---------- Conexiones del A4988 ---------- */
+#define STEP_PORT   PORT_3
+#define STEP_PIN    PIN_26          /* pin STEP */
+#define DIR_PORT    PORT_0
+#define DIR_PIN     PIN_0           /* pin DIR  */
+
+/* ---------- Parametros de la rampa ---------- */
+#define TICK_HZ     10000u          /* 1 tick = 100 us (ver SysTick_Config) */
+#define V_START     150             /* velocidad de arranque (pasos/s) */
+#define V_MAX       2000            /* velocidad de crucero  (pasos/s) */
+#define ACCEL       1000            /* aceleracion (pasos/s^2)         */
+#define V_HOME      800             /* velocidad de homing (pasos/s) ~4 mm/s, suave */
+
+/* "Infinito" de pasos para el movimiento continuo de homing */
+#define JOG_STEPS   ((int32_t)0x7FFFFFFF)
+
+/* ---------- Estado del generador de pasos (lo toca la ISR de SysTick) ---------- */
+static volatile int32_t  stepsToGo  = 0;   /* pasos que faltan del movimiento  */
+static volatile int32_t  stepsDone  = 0;   /* pasos ya dados en el movimiento   */
+static volatile int32_t  accelSteps = 0;   /* pasos que tardo en llegar a V_MAX */
+static volatile int32_t  position   = 0;   /* posicion absoluta en pasos (signo) */
+static volatile float    vel        = 0;   /* velocidad actual (pasos/s)        */
+static volatile uint32_t interval   = 0;   /* ticks entre pasos                 */
+static volatile uint32_t tickCnt    = 0;
+static volatile uint8_t  pulseHigh  = 0;
+static volatile uint8_t  moveDir    = DIR_TO_MAX;  /* sentido del movimiento actual */
+static volatile uint8_t  decel      = 0;
+static volatile uint8_t  jogMode    = 0;   /* 1 = velocidad constante (homing)  */
+static volatile uint32_t vmax       = V_MAX; /* velocidad de crucero (la maneja el pot) */
+
+/* ---------- Prototipos privados ---------- */
+static void motor_configPins(void);
+
+/* ====================================================================== */
+
+void motor_init(void) {
+    NVIC_SetPriority(SysTick_IRQn, 0);      /* el generador de pasos es lo mas prioritario */
+    motor_configPins();
+
+    /* Tick de 100 us, independiente del reloj real (CCLK = 100 MHz aca).
+       SystemCoreClock/10000 = 10000 -> SysTick interrumpe cada 100 us. */
+    SysTick_Config(SystemCoreClock / 10000);
+}
+
+/* Configura STEP y DIR como salidas GPIO. */
+static void motor_configPins(void) {
+    PINSEL_CFG_T pinCfg = {0};
+    pinCfg.func = PINSEL_FUNC_00;
+
+    /* STEP */
+    pinCfg.port = STEP_PORT;
+    pinCfg.pin  = STEP_PIN;
+    PINSEL_ConfigPin(&pinCfg);
+    GPIO_SetDir(STEP_PORT, (1 << STEP_PIN), GPIO_OUTPUT);
+    GPIO_ClearPins(STEP_PORT, (1 << STEP_PIN));
+
+    /* DIR */
+    pinCfg.port = DIR_PORT;
+    pinCfg.pin  = DIR_PIN;
+    PINSEL_ConfigPin(&pinCfg);
+    GPIO_SetDir(DIR_PORT, (1 << DIR_PIN), GPIO_OUTPUT);
+    GPIO_ClearPins(DIR_PORT, (1 << DIR_PIN));
+}
+
+/* Setea el pin DIR segun el sentido pedido. */
+static void applyDir(uint8_t dir) {
+    if (dir) GPIO_SetPins(DIR_PORT, (1 << DIR_PIN));
+    else     GPIO_ClearPins(DIR_PORT, (1 << DIR_PIN));
+}
+
+void motor_move(int32_t steps, uint8_t dir) {
+    /* Antitrabado: no arrancar contra un tope que ya esta pisado.
+       Como solo se bloquea el sentido del tope pisado, el retroceso siempre se permite. */
+    if (dir == DIR_TO_MIN && limit_pressed(LS_MIN_MASK)) return;
+    if (dir == DIR_TO_MAX && limit_pressed(LS_MAX_MASK)) return;
+
+    moveDir = dir;                  /* que la ISR del final sepa hacia donde voy */
+    applyDir(dir);
+
+    jogMode    = 0;
+    stepsDone  = 0;
+    accelSteps = 0;
+    decel      = 0;
+    vel        = V_START;
+    interval   = (uint32_t)(TICK_HZ / V_START);
+    tickCnt    = 0;
+    stepsToGo  = steps;             /* esto "dispara" el movimiento */
+}
+
+void motor_jog(uint8_t dir) {
+    if (dir == DIR_TO_MIN && limit_pressed(LS_MIN_MASK)) return;
+    if (dir == DIR_TO_MAX && limit_pressed(LS_MAX_MASK)) return;
+
+    moveDir = dir;
+    applyDir(dir);
+
+    jogMode   = 1;                  /* velocidad constante, sin rampa */
+    vel       = V_HOME;
+    interval  = (uint32_t)(TICK_HZ / V_HOME);
+    tickCnt   = 0;
+    stepsToGo = JOG_STEPS;          /* "infinito": solo lo frena un tope o motor_stop() */
+}
+
+void motor_stop(void) {
+    stepsToGo = 0;                  /* store atomico de 32 bits -> frena en el acto */
+}
+
+uint8_t motor_busy(void) {
+    return (stepsToGo > 0) ? 1u : 0u;
+}
+
+uint8_t motor_dir(void) {
+    return moveDir;
+}
+
+int32_t motor_position(void) {
+    return position;
+}
+
+float motor_position_mm(void) {
+    return (float)position / STEPS_PER_MM;
+}
+
+void motor_set_position(int32_t steps) {
+    position = steps;
+}
+
+void motor_set_max_speed(uint32_t v) {
+    if (v < V_START) v = V_START;       /* no por debajo del arranque */
+    if (v > V_MAX)   v = V_MAX;          /* tope de seguridad */
+    vmax = v;
+}
+
+void motor_goto_steps(int32_t target) {
+    int32_t delta = target - position;          /* cuanto falta, con signo */
+    if (delta > 0)      motor_move(delta, DIR_TO_MAX);
+    else if (delta < 0) motor_move(-delta, DIR_TO_MIN);
+    /* delta == 0: ya estamos en el objetivo, no hacer nada */
+}
+
+void motor_goto_mm(float mm) {
+    float steps = mm * STEPS_PER_MM;
+    /* redondeo al paso mas cercano */
+    int32_t target = (int32_t)(steps >= 0 ? steps + 0.5f : steps - 0.5f);
+    motor_goto_steps(target);
+}
+
+/* ---------------------------- ISR del SysTick ---------------------------- */
+void SysTick_Handler(void) {
+    /* Bajar STEP un tick despues de subirlo => pulso de 100 us
+       (de sobra para el A4988, que pide minimo ~1 us). */
+    if (pulseHigh) {
+        GPIO_ClearPins(STEP_PORT, (1 << STEP_PIN));
+        pulseHigh = 0;
+    }
+
+    if (stepsToGo <= 0)        return;   /* no hay movimiento en curso */
+    if (++tickCnt < interval)  return;   /* todavia no toca dar el paso */
+    tickCnt = 0;
+
+    /* Flanco de subida en STEP = un paso */
+    GPIO_SetPins(STEP_PORT, (1 << STEP_PIN));
+    pulseHigh = 1;
+    stepsDone++;
+    stepsToGo--;
+
+    /* Posicion absoluta: + hacia MAX, - hacia MIN */
+    position += (moveDir == DIR_TO_MAX) ? 1 : -1;
+
+    if (jogMode) {
+        return;                          /* velocidad constante: no se toca la rampa */
+    }
+
+    /* Actualizar la velocidad segun la fase de la rampa (vmax = velocidad del pot) */
+    if (decel) {                                /* deceleracion */
+        vel -= ACCEL / vel;
+        if (vel < V_START) vel = V_START;
+    }
+    else if (vel < vmax) {                      /* aceleracion */
+        if (stepsToGo <= stepsDone) {           /* movimiento corto: freno en el medio */
+            decel = 1;
+        } else {
+            vel += ACCEL / vel;
+            if (vel >= vmax) { vel = vmax; accelSteps = stepsDone; }
+        }
+    }
+    else {                                      /* crucero */
+        if (vel > vmax) {                       /* el pot bajo la velocidad: seguirlo */
+            vel -= ACCEL / vel;
+            if (vel < vmax) vel = vmax;
+        }
+        if (stepsToGo <= accelSteps) decel = 1; /* empezar a frenar (simetrico) */
+    }
+
+    interval = (uint32_t)(TICK_HZ / vel);
+    if (interval < 2) interval = 2;             /* garantiza que el pulso baje */
+}
