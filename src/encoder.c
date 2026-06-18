@@ -26,7 +26,7 @@
 void encoder_init(void) {
     PINSEL_CFG_T pinCfg = {0};
     pinCfg.func      = PINSEL_FUNC_01;   /* 01 = MCIx (entradas del QEI) */
-    pinCfg.mode      = PINSEL_TRISTATE;  /* sin pull interno: el encoder define el nivel */
+    pinCfg.mode      = PINSEL_PULLUP;    /* pull-up interno: necesario si el encoder es colector abierto */
     pinCfg.openDrain = DISABLE;
     pinCfg.port      = PORT_1;
 

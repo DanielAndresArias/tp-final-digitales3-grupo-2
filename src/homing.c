@@ -7,7 +7,11 @@
  *      hacia el (motor_jog a velocidad de homing).
  *   2. El final de carrera del 0 (EINT1) frena el motor al pisarse.
  *   3. Verificamos que efectivamente quedamos sobre ese switch.
- *   4. Fijamos el cero: contador de pasos y encoder a 0.
+ *   4. Fijamos el cero (contador de pasos y encoder a 0).
+ *   5. Nos despegamos del switch unos mm: no conviene operar pisando el final
+ *      de carrera, porque el rebote del contacto dispara la interrupcion una y
+ *      otra vez y le roba el CPU al lazo principal. El 0 sigue en el switch;
+ *      la tuerca solo descansa en +BACKOFF_MM.
  */
 
 #include "homing.h"
@@ -15,6 +19,8 @@
 #include "motor.h"
 #include "limit_switches.h"
 #include "encoder.h"
+
+#define BACKOFF_MM 10       /* cuanto despegarse del switch tras tocar el 0 en mm */
 
 uint8_t homing_run(void) {
     /* Si no estamos ya en el cero, avanzar despacio hacia el switch del 0. */
@@ -33,5 +39,13 @@ uint8_t homing_run(void) {
     /* Cero alcanzado: fijar la referencia en ambos contadores. */
     motor_set_position(0);
     encoder_zero();
+
+    /* Despegarse del switch para no quedar pisandolo (evita el chatter del
+       contacto disparando interrupciones sin parar). Queda en +BACKOFF_MM. */
+    motor_move(MM_TO_STEPS(BACKOFF_MM), DIR_TO_MAX);
+    while (motor_busy()) {
+        /* el SysTick (mas prioritario) genera los pasos aunque haya rebotes */
+    }
+
     return 1;
 }

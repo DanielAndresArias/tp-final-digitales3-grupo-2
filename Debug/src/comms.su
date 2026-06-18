@@ -1,0 +1,8 @@
+C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\inc/core_cm3.h:928:22:NVIC_EnableIRQ	16	static
+C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\inc/core_cm3.h:1012:22:NVIC_SetPriority	16	static
+../src/comms.c:36:6:comms_init	24	static
+../src/comms.c:65:13:send_str	16	static
+../src/comms.c:71:13:send_mm	72	static
+../src/comms.c:102:14:parse_float	40	static
+../src/comms.c:120:6:comms_task	16	static
+../src/comms.c:145:6:UART0_IRQHandler	16	static

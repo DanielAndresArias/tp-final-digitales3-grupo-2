@@ -46,11 +46,12 @@ uint8_t limit_pressed(uint32_t mask) {
 
 void EINT0_IRQHandler(void) {                  /* tope MAX (+) */
     EXTI_ClearFlag(EXTI_EINT0);
-    if (motor_dir() == DIR_TO_MAX) motor_stop();
+    /* Confirmar que el switch este realmente pisado: un glitch de ruido ya
+       volvio a alto cuando la ISR lo lee, asi que se descarta (no frena). */
+    if (motor_dir() == DIR_TO_MAX && limit_pressed(LS_MAX_MASK)) motor_stop();
 }
 
 void EINT1_IRQHandler(void) {                  /* tope MIN / cero (-) */
     EXTI_ClearFlag(EXTI_EINT1);
-    if (motor_dir() == DIR_TO_MIN) motor_stop();
-    /* Mas adelante, durante el homing, aca pondremos la posicion en 0. */
+    if (motor_dir() == DIR_TO_MIN && limit_pressed(LS_MIN_MASK)) motor_stop();
 }

@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/comms.c \
 ../src/cr_startup_lpc175x_6x.c \
 ../src/crp.c \
 ../src/encoder.c \
@@ -14,6 +15,7 @@ C_SRCS += \
 ../src/pot.c 
 
 C_DEPS += \
+./src/comms.d \
 ./src/cr_startup_lpc175x_6x.d \
 ./src/crp.d \
 ./src/encoder.d \
@@ -24,6 +26,7 @@ C_DEPS += \
 ./src/pot.d 
 
 OBJS += \
+./src/comms.o \
 ./src/cr_startup_lpc175x_6x.o \
 ./src/crp.o \
 ./src/encoder.o \
@@ -46,7 +49,7 @@ src/%.o: ../src/%.c src/subdir.mk
 clean: clean-src
 
 clean-src:
-	-$(RM) ./src/cr_startup_lpc175x_6x.d ./src/cr_startup_lpc175x_6x.o ./src/crp.d ./src/crp.o ./src/encoder.d ./src/encoder.o ./src/homing.d ./src/homing.o ./src/limit_switches.d ./src/limit_switches.o ./src/main.d ./src/main.o ./src/motor.d ./src/motor.o ./src/pot.d ./src/pot.o
+	-$(RM) ./src/comms.d ./src/comms.o ./src/cr_startup_lpc175x_6x.d ./src/cr_startup_lpc175x_6x.o ./src/crp.d ./src/crp.o ./src/encoder.d ./src/encoder.o ./src/homing.d ./src/homing.o ./src/limit_switches.d ./src/limit_switches.o ./src/main.d ./src/main.o ./src/motor.d ./src/motor.o ./src/pot.d ./src/pot.o
 
 .PHONY: clean-src
 

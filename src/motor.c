@@ -2,13 +2,17 @@
  * motor.c
  * Generador de pasos con rampa trapezoidal para NEMA17 + A4988.
  *
- * Arranca lento (V_START), acelera hasta una velocidad de crucero (V_MAX),
- * la mantiene y desacelera antes de frenar. Asi el motor no pierde pasos al
- * arrancar/frenar de golpe.
+ * Rampa 100% ENTERA (sin float en la ISR): la velocidad se lleva en punto fijo
+ * Q8 (vel_fp = pasos/s * 256). Asi el incremento por paso ACCEL/vel, que en
+ * enteros "puros" se haria 0 cuando vel > ACCEL, queda representable:
  *
- * Ademas lleva un contador de posicion absoluta (en pasos, con signo) que la
- * ISR actualiza en cada paso, y un modo de "jog" a velocidad constante para el
- * homing.
+ *     vel_fp += (ACCEL * 256 * 256) / vel_fp
+ *
+ * Se mantiene un contador de posicion absoluta (pasos, con signo) que la ISR
+ * actualiza en cada paso, y un modo de "jog" a velocidad constante para homing.
+ *
+ * (Las conversiones a mm de la API publica siguen en float, pero corren fuera
+ *  de la ISR, en el lazo principal, donde el costo del soft-float no importa.)
  */
 
 #include "motor.h"
@@ -24,12 +28,19 @@
 #define DIR_PORT    PORT_0
 #define DIR_PIN     PIN_0           /* pin DIR  */
 
-/* ---------- Parametros de la rampa ---------- */
+/* ---------- Parametros de la rampa (pasos/s y pasos/s^2) ---------- */
 #define TICK_HZ     10000u          /* 1 tick = 100 us (ver SysTick_Config) */
 #define V_START     150             /* velocidad de arranque (pasos/s) */
-#define V_MAX       2000            /* velocidad de crucero  (pasos/s) */
+#define V_MAX       2000            /* velocidad de crucero maxima (pasos/s) */
 #define ACCEL       1000            /* aceleracion (pasos/s^2)         */
 #define V_HOME      800             /* velocidad de homing (pasos/s) ~4 mm/s, suave */
+
+/* ---------- Punto fijo Q8 para la velocidad ---------- */
+#define VSCALE      256u                                  /* factor de escala (2^8) */
+#define V_START_FP  ((uint32_t)V_START * VSCALE)
+#define V_HOME_FP   ((uint32_t)V_HOME  * VSCALE)
+#define ACCEL_NUM   ((uint32_t)ACCEL * VSCALE * VSCALE)   /* numerador de ACCEL/vel */
+#define TICKS_NUM   ((uint32_t)TICK_HZ * VSCALE)          /* numerador de TICK_HZ/vel */
 
 /* "Infinito" de pasos para el movimiento continuo de homing */
 #define JOG_STEPS   ((int32_t)0x7FFFFFFF)
@@ -37,16 +48,16 @@
 /* ---------- Estado del generador de pasos (lo toca la ISR de SysTick) ---------- */
 static volatile int32_t  stepsToGo  = 0;   /* pasos que faltan del movimiento  */
 static volatile int32_t  stepsDone  = 0;   /* pasos ya dados en el movimiento   */
-static volatile int32_t  accelSteps = 0;   /* pasos que tardo en llegar a V_MAX */
+static volatile int32_t  accelSteps = 0;   /* pasos que tardo en llegar a vmax  */
 static volatile int32_t  position   = 0;   /* posicion absoluta en pasos (signo) */
-static volatile float    vel        = 0;   /* velocidad actual (pasos/s)        */
+static volatile uint32_t vel_fp     = 0;   /* velocidad actual en Q8 (pasos/s*256) */
 static volatile uint32_t interval   = 0;   /* ticks entre pasos                 */
 static volatile uint32_t tickCnt    = 0;
+static volatile uint32_t vmax       = V_MAX; /* velocidad de crucero (la maneja el pot) */
 static volatile uint8_t  pulseHigh  = 0;
 static volatile uint8_t  moveDir    = DIR_TO_MAX;  /* sentido del movimiento actual */
 static volatile uint8_t  decel      = 0;
 static volatile uint8_t  jogMode    = 0;   /* 1 = velocidad constante (homing)  */
-static volatile uint32_t vmax       = V_MAX; /* velocidad de crucero (la maneja el pot) */
 
 /* ---------- Prototipos privados ---------- */
 static void motor_configPins(void);
@@ -101,8 +112,8 @@ void motor_move(int32_t steps, uint8_t dir) {
     stepsDone  = 0;
     accelSteps = 0;
     decel      = 0;
-    vel        = V_START;
-    interval   = (uint32_t)(TICK_HZ / V_START);
+    vel_fp     = V_START_FP;
+    interval   = TICKS_NUM / vel_fp;
     tickCnt    = 0;
     stepsToGo  = steps;             /* esto "dispara" el movimiento */
 }
@@ -115,8 +126,8 @@ void motor_jog(uint8_t dir) {
     applyDir(dir);
 
     jogMode   = 1;                  /* velocidad constante, sin rampa */
-    vel       = V_HOME;
-    interval  = (uint32_t)(TICK_HZ / V_HOME);
+    vel_fp    = V_HOME_FP;
+    interval  = TICKS_NUM / vel_fp;
     tickCnt   = 0;
     stepsToGo = JOG_STEPS;          /* "infinito": solo lo frena un tope o motor_stop() */
 }
@@ -145,12 +156,6 @@ void motor_set_position(int32_t steps) {
     position = steps;
 }
 
-void motor_set_max_speed(uint32_t v) {
-    if (v < V_START) v = V_START;       /* no por debajo del arranque */
-    if (v > V_MAX)   v = V_MAX;          /* tope de seguridad */
-    vmax = v;
-}
-
 void motor_goto_steps(int32_t target) {
     int32_t delta = target - position;          /* cuanto falta, con signo */
     if (delta > 0)      motor_move(delta, DIR_TO_MAX);
@@ -163,6 +168,12 @@ void motor_goto_mm(float mm) {
     /* redondeo al paso mas cercano */
     int32_t target = (int32_t)(steps >= 0 ? steps + 0.5f : steps - 0.5f);
     motor_goto_steps(target);
+}
+
+void motor_set_max_speed(uint32_t v) {
+    if (v < V_START) v = V_START;       /* no por debajo del arranque */
+    if (v > V_MAX)   v = V_MAX;          /* tope de seguridad */
+    vmax = v;
 }
 
 /* ---------------------------- ISR del SysTick ---------------------------- */
@@ -191,27 +202,29 @@ void SysTick_Handler(void) {
         return;                          /* velocidad constante: no se toca la rampa */
     }
 
-    /* Actualizar la velocidad segun la fase de la rampa (vmax = velocidad del pot) */
-    if (decel) {                                /* deceleracion */
-        vel -= ACCEL / vel;
-        if (vel < V_START) vel = V_START;
+    /* --- Rampa trapezoidal, todo entero en punto fijo Q8 --- */
+    uint32_t vmax_fp = vmax * VSCALE;    /* velocidad de crucero del pot, escalada */
+
+    if (decel) {                                 /* deceleracion */
+        vel_fp -= ACCEL_NUM / vel_fp;
+        if (vel_fp < V_START_FP) vel_fp = V_START_FP;
     }
-    else if (vel < vmax) {                      /* aceleracion */
-        if (stepsToGo <= stepsDone) {           /* movimiento corto: freno en el medio */
+    else if (vel_fp < vmax_fp) {                 /* aceleracion */
+        if (stepsToGo <= stepsDone) {            /* movimiento corto: freno en el medio */
             decel = 1;
         } else {
-            vel += ACCEL / vel;
-            if (vel >= vmax) { vel = vmax; accelSteps = stepsDone; }
+            vel_fp += ACCEL_NUM / vel_fp;
+            if (vel_fp >= vmax_fp) { vel_fp = vmax_fp; accelSteps = stepsDone; }
         }
     }
-    else {                                      /* crucero */
-        if (vel > vmax) {                       /* el pot bajo la velocidad: seguirlo */
-            vel -= ACCEL / vel;
-            if (vel < vmax) vel = vmax;
+    else {                                       /* crucero */
+        if (vel_fp > vmax_fp) {                  /* el pot bajo la velocidad: seguirlo */
+            vel_fp -= ACCEL_NUM / vel_fp;
+            if (vel_fp < vmax_fp) vel_fp = vmax_fp;
         }
-        if (stepsToGo <= accelSteps) decel = 1; /* empezar a frenar (simetrico) */
+        if (stepsToGo <= accelSteps) decel = 1;  /* empezar a frenar (simetrico) */
     }
 
-    interval = (uint32_t)(TICK_HZ / vel);
-    if (interval < 2) interval = 2;             /* garantiza que el pulso baje */
+    interval = TICKS_NUM / vel_fp;
+    if (interval < 2) interval = 2;              /* garantiza que el pulso baje */
 }
