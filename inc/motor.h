@@ -48,8 +48,8 @@ uint8_t motor_dir(void);
 /* Posicion actual en pasos (con signo). Se pone en 0 en el home. */
 int32_t motor_position(void);
 
-/* Posicion actual en milimetros. */
-float motor_position_mm(void);
+/* Posicion actual en centesimas de milimetro (mm x 100). Entero, sin float. */
+int32_t motor_position_centimm(void);
 
 /* Fija el contador de posicion (p.ej. motor_set_position(0) al llegar al home). */
 void motor_set_position(int32_t steps);
@@ -68,6 +68,6 @@ void motor_set_max_speed(uint32_t v);
  * El sentido se calcula solo segun la posicion actual. Para saber cuando
  * termino, consultar motor_busy(). */
 void motor_goto_steps(int32_t target);
-void motor_goto_mm(float mm);
+void motor_goto_centimm(int32_t cmm);   /* cmm = mm * 100 (ej. 12.5 mm -> 1250) */
 
 #endif /* MOTOR_H_ */

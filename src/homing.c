@@ -20,7 +20,7 @@
 #include "limit_switches.h"
 #include "encoder.h"
 
-#define BACKOFF_MM 10       /* cuanto despegarse del switch tras tocar el 0 en mm */
+#define BACKOFF_MM   2          /* cuanto despegarse del switch tras tocar el 0 (mm enteros) */
 
 uint8_t homing_run(void) {
     /* Si no estamos ya en el cero, avanzar despacio hacia el switch del 0. */

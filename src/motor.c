@@ -11,8 +11,9 @@
  * Se mantiene un contador de posicion absoluta (pasos, con signo) que la ISR
  * actualiza en cada paso, y un modo de "jog" a velocidad constante para homing.
  *
- * (Las conversiones a mm de la API publica siguen en float, pero corren fuera
- *  de la ISR, en el lazo principal, donde el costo del soft-float no importa.)
+ * Las conversiones mm<->pasos de la API publica tambien son enteras: se trabaja
+ * en centesimas de milimetro (cmm = mm*100), asi el firmware no usa float en
+ * ningun lado.
  */
 
 #include "motor.h"
@@ -148,8 +149,11 @@ int32_t motor_position(void) {
     return position;
 }
 
-float motor_position_mm(void) {
-    return (float)position / STEPS_PER_MM;
+int32_t motor_position_centimm(void) {
+    /* cmm = position * 100 / STEPS_PER_MM, redondeado al 0.01 mm mas cercano */
+    int32_t num = position * 100;
+    return (num >= 0) ? (num + STEPS_PER_MM / 2) / STEPS_PER_MM
+                      : (num - STEPS_PER_MM / 2) / STEPS_PER_MM;
 }
 
 void motor_set_position(int32_t steps) {
@@ -163,10 +167,11 @@ void motor_goto_steps(int32_t target) {
     /* delta == 0: ya estamos en el objetivo, no hacer nada */
 }
 
-void motor_goto_mm(float mm) {
-    float steps = mm * STEPS_PER_MM;
-    /* redondeo al paso mas cercano */
-    int32_t target = (int32_t)(steps >= 0 ? steps + 0.5f : steps - 0.5f);
+void motor_goto_centimm(int32_t cmm) {
+    /* target en pasos = cmm * STEPS_PER_MM / 100, redondeado al paso mas cercano.
+       cmm*STEPS_PER_MM entra de sobra en int32 (250 mm -> 25000*200 = 5e6). */
+    int32_t num = cmm * STEPS_PER_MM;
+    int32_t target = (num >= 0) ? (num + 50) / 100 : (num - 50) / 100;
     motor_goto_steps(target);
 }
 

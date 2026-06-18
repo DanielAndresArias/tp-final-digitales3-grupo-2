@@ -1,4 +1,5 @@
-../src/encoder.c:26:6:encoder_init	32	static
-../src/encoder.c:51:6:encoder_zero	8	static
-../src/encoder.c:55:7:encoder_posicion_mm	16	static
-../src/encoder.c:60:7:encoder_velocidad_mm_s	16	static
+../src/encoder.c:40:6:encoder_init	32	static
+../src/encoder.c:73:6:encoder_debug_update	4	static
+../src/encoder.c:88:6:encoder_zero	8	static
+../src/encoder.c:92:9:encoder_posicion_centimm	16	static
+../src/encoder.c:102:9:encoder_velocidad_centimm_s	16	static

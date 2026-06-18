@@ -66,17 +66,15 @@ static void send_str(const char *s) {
     UART_Send(U0, (const uint8_t *)s, (uint32_t)strlen(s), BLOCKING);
 }
 
-/* Envia un float como "ddd.dd" formateando a mano (sin stdio/sprintf, que
- * arrastra semihosting). */
-static void send_mm(float v) {
+/* Envia un valor en centesimas de mm como "ddd.dd" (entero, sin stdio/sprintf). */
+static void send_cmm(int32_t v) {
     char buf[24];
     int  i = 0;
 
-    if (v < 0.0f) { buf[i++] = '-'; v = -v; }
+    if (v < 0) { buf[i++] = '-'; v = -v; }
 
-    int32_t whole = (int32_t)v;
-    int32_t frac  = (int32_t)((v - (float)whole) * 100.0f + 0.5f);  /* 2 decimales */
-    if (frac >= 100) { whole++; frac -= 100; }
+    int32_t whole = v / 100;   /* parte entera (mm)        */
+    int32_t frac  = v % 100;   /* parte decimal (0..99)    */
 
     /* parte entera (se arma al reves y se vuelca) */
     char tmp[12];
@@ -97,22 +95,28 @@ static void send_mm(float v) {
     send_str(buf);
 }
 
-/* ---------- Parseo de numero (acepta '.' o ',' como decimal) ---------- */
+/* ---------- Parseo de numero -> centesimas de mm (acepta '.' o ',') ---------- */
 
-static float parse_float(const volatile char *s) {
+static int32_t parse_centimm(const volatile char *s) {
     while (*s == ' ' || *s == '\t') s++;
     int neg = 0;
     if (*s == '-') { neg = 1; s++; }
     else if (*s == '+') s++;
 
-    float val = 0.0f;
-    while (*s >= '0' && *s <= '9') { val = val * 10.0f + (*s - '0'); s++; }
+    int32_t whole = 0;
+    while (*s >= '0' && *s <= '9') { whole = whole * 10 + (*s - '0'); s++; }
+
+    int32_t frac = 0;                  /* dos decimales (centesimas) */
     if (*s == '.' || *s == ',') {
         s++;
-        float scale = 0.1f;
-        while (*s >= '0' && *s <= '9') { val += (*s - '0') * scale; scale *= 0.1f; s++; }
+        int d = 0;
+        while (d < 2 && *s >= '0' && *s <= '9') { frac = frac * 10 + (*s - '0'); s++; d++; }
+        if (d == 1) frac *= 10;        /* "5" -> 50 centesimas */
+        while (*s >= '0' && *s <= '9') s++;   /* descartar decimales extra */
     }
-    return neg ? -val : val;
+
+    int32_t cmm = whole * 100 + frac;
+    return neg ? -cmm : cmm;
 }
 
 /* ---------- Procesa una linea recibida ---------- */
@@ -127,13 +131,13 @@ void comms_task(void) {
         send_str("Listo. Posicion = 0\r\n");
     }
     else if (c == 'p' || c == 'P') {
-        send_str("Motor: ");   send_mm(motor_position_mm());    send_str(" mm   ");
-        send_str("Encoder: "); send_mm(encoder_posicion_mm()); send_str(" mm\r\n");
+        send_str("Motor: ");   send_cmm(motor_position_centimm());   send_str(" mm   ");
+        send_str("Encoder: "); send_cmm(encoder_posicion_centimm()); send_str(" mm\r\n");
     }
     else {
-        float mm = parse_float(line);
-        motor_goto_mm(mm);
-        send_str("OK -> "); send_mm(mm); send_str(" mm\r\n");
+        int32_t cmm = parse_centimm(line);
+        motor_goto_centimm(cmm);
+        send_str("OK -> "); send_cmm(cmm); send_str(" mm\r\n");
     }
 
     lineReady = 0;

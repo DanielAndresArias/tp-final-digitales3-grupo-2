@@ -26,8 +26,6 @@ C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.
                               C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o) (__aeabi_uldivmod)
 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_idiv0.o)
                               C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_64.o) (__aeabi_idiv0)
-C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                              ./src/comms.o (__aeabi_fmul)
 
 Discarded input sections
 
@@ -73,15 +71,17 @@ Discarded input sections
  .text          0x00000000        0x0 ./src/encoder.o
  .data          0x00000000        0x0 ./src/encoder.o
  .bss           0x00000000        0x0 ./src/encoder.o
- .text.encoder_velocidad_mm_s
-                0x00000000       0x4c ./src/encoder.o
+ .text.encoder_velocidad_centimm_s
+                0x00000000       0x48 ./src/encoder.o
  .debug_macro   0x00000000      0xade ./src/encoder.o
- .debug_macro   0x00000000       0x2e ./src/encoder.o
  .debug_macro   0x00000000       0x10 ./src/encoder.o
  .debug_macro   0x00000000      0x12e ./src/encoder.o
  .debug_macro   0x00000000      0x5b3 ./src/encoder.o
+ .debug_macro   0x00000000       0x1c ./src/encoder.o
+ .debug_macro   0x00000000       0x2e ./src/encoder.o
  .debug_macro   0x00000000       0x18 ./src/encoder.o
  .debug_macro   0x00000000      0x7af ./src/encoder.o
+ .debug_macro   0x00000000      0x2c7 ./src/encoder.o
  .debug_macro   0x00000000       0x63 ./src/encoder.o
  .group         0x00000000        0xc ./src/homing.o
  .group         0x00000000        0xc ./src/homing.o
@@ -168,11 +168,9 @@ Discarded input sections
  .debug_macro   0x00000000      0x5b3 ./src/motor.o
  .debug_macro   0x00000000       0x1c ./src/motor.o
  .debug_macro   0x00000000       0x16 ./src/motor.o
- .debug_macro   0x00000000       0x1c ./src/motor.o
  .debug_macro   0x00000000       0x2e ./src/motor.o
  .debug_macro   0x00000000       0x18 ./src/motor.o
  .debug_macro   0x00000000      0x7af ./src/motor.o
- .debug_macro   0x00000000      0x2c7 ./src/motor.o
  .debug_macro   0x00000000       0x16 ./src/motor.o
  .debug_macro   0x00000000       0x63 ./src/motor.o
  .debug_macro   0x00000000       0x4c ./src/motor.o
@@ -503,8 +501,6 @@ Discarded input sections
                 0x00000000        0xe C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
  .text.QEI_GetStatus
                 0x00000000       0x34 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
- .text.QEI_SetMaxPosition
-                0x00000000       0x20 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
  .text.QEI_SetPositionComp
                 0x00000000       0x34 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
  .text.QEI_GetIndex
@@ -541,7 +537,6 @@ Discarded input sections
  .debug_macro   0x00000000      0x7af C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
  .debug_macro   0x00000000      0x2c7 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
  .debug_macro   0x00000000       0x63 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
- .debug_macro   0x00000000      0x39a C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
  .debug_macro   0x00000000      0x2f1 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
  .debug_macro   0x00000000       0xdd C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
  .group         0x00000000        0xc C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
@@ -633,39 +628,6 @@ Discarded input sections
  .text          0x00000000        0x0 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_idiv0.o)
  .data          0x00000000        0x0 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_idiv0.o)
  .bss           0x00000000        0x0 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_idiv0.o)
- .text          0x00000000        0x0 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
- .data          0x00000000        0x0 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
- .bss           0x00000000        0x0 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
- .text.__aeabi_frsub
-                0x00000000        0xc C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
- .text.__aeabi_fneg
-                0x00000000        0x6 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
- .text.__aeabi_f2uiz
-                0x00000000       0x26 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
- .text.__aeabi_f2lz
-                0x00000000       0x5c C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
- .text.__aeabi_f2ulz
-                0x00000000       0x3e C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
- .text.__bhs_ul2f
-                0x00000000       0x46 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
- .text.__aeabi_l2f
-                0x00000000       0x20 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
- .text.__aeabi_ul2f
-                0x00000000        0x8 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
- .text.__aeabi_f2d
-                0x00000000       0x38 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
- .text.__aeabi_fcmpeq
-                0x00000000       0x1e C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
- .text.__aeabi_fcmpgt
-                0x00000000       0x3a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
- .text.__aeabi_fcmple
-                0x00000000       0x3e C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
- .text.__aeabi_fcmpun
-                0x00000000       0x1a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
- .text.__aeabi_cfcmple
-                0x00000000       0x20 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
- .text.__aeabi_cfrcmple
-                0x00000000        0xa C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
 
 Memory Configuration
 
@@ -705,7 +667,7 @@ END GROUP
                 0x20084000                        __top_RamAHB32 = 0x20084000
                 0x20084000                        __top_RAM2 = 0x20084000
 
-.text           0x00000000     0x2510
+.text           0x00000000     0x222c
  FILL mask 0xff
                 0x00000000                        __vectors_start__ = ABSOLUTE (.)
  *(.isr_vector)
@@ -714,16 +676,16 @@ END GROUP
                 0x000000cc                        . = ALIGN (0x4)
                 0x000000cc                        __section_table_start = .
                 0x000000cc                        __data_section_table = .
-                0x000000cc        0x4 LONG 0x2510 LOADADDR (.data)
+                0x000000cc        0x4 LONG 0x222c LOADADDR (.data)
                 0x000000d0        0x4 LONG 0x10000000 ADDR (.data)
                 0x000000d4        0x4 LONG 0xc SIZEOF (.data)
-                0x000000d8        0x4 LONG 0x2510 LOADADDR (.data_RAM2)
+                0x000000d8        0x4 LONG 0x222c LOADADDR (.data_RAM2)
                 0x000000dc        0x4 LONG 0x2007c000 ADDR (.data_RAM2)
                 0x000000e0        0x4 LONG 0x0 SIZEOF (.data_RAM2)
                 0x000000e4                        __data_section_table_end = .
                 0x000000e4                        __bss_section_table = .
                 0x000000e4        0x4 LONG 0x1000000c ADDR (.bss)
-                0x000000e8        0x4 LONG 0x44 SIZEOF (.bss)
+                0x000000e8        0x4 LONG 0x6c SIZEOF (.bss)
                 0x000000ec        0x4 LONG 0x2007c000 ADDR (.bss_RAM2)
                 0x000000f0        0x4 LONG 0x0 SIZEOF (.bss_RAM2)
                 0x000000f4                        __bss_section_table_end = .
@@ -793,311 +755,287 @@ END GROUP
                 0x00000384                comms_init
  .text.send_str
                 0x00000404       0x28 ./src/comms.o
- .text.send_mm  0x0000042c      0x18c ./src/comms.o
- .text.parse_float
-                0x000005b8      0x124 ./src/comms.o
+ .text.send_cmm
+                0x0000042c      0x158 ./src/comms.o
+ .text.parse_centimm
+                0x00000584      0x13c ./src/comms.o
  .text.comms_task
-                0x000006dc       0xd0 ./src/comms.o
-                0x000006dc                comms_task
+                0x000006c0       0xd0 ./src/comms.o
+                0x000006c0                comms_task
  .text.UART0_IRQHandler
-                0x000007ac       0xb4 ./src/comms.o
-                0x000007ac                UART0_IRQHandler
+                0x00000790       0xb4 ./src/comms.o
+                0x00000790                UART0_IRQHandler
  .text.encoder_init
-                0x00000860       0x98 ./src/encoder.o
-                0x00000860                encoder_init
+                0x00000844       0xa8 ./src/encoder.o
+                0x00000844                encoder_init
+ .text.encoder_debug_update
+                0x000008ec       0xbc ./src/encoder.o
+                0x000008ec                encoder_debug_update
  .text.encoder_zero
-                0x000008f8       0x14 ./src/encoder.o
-                0x000008f8                encoder_zero
- .text.encoder_posicion_mm
-                0x0000090c       0x30 ./src/encoder.o
-                0x0000090c                encoder_posicion_mm
+                0x000009a8       0x14 ./src/encoder.o
+                0x000009a8                encoder_zero
+ .text.encoder_posicion_centimm
+                0x000009bc       0x58 ./src/encoder.o
+                0x000009bc                encoder_posicion_centimm
  .text.homing_run
-                0x0000093c       0x5c ./src/homing.o
-                0x0000093c                homing_run
+                0x00000a14       0x5c ./src/homing.o
+                0x00000a14                homing_run
  .text.NVIC_SetPriority
-                0x00000998       0x54 ./src/limit_switches.o
+                0x00000a70       0x54 ./src/limit_switches.o
  .text.limits_init
-                0x000009ec       0x52 ./src/limit_switches.o
-                0x000009ec                limits_init
+                0x00000ac4       0x52 ./src/limit_switches.o
+                0x00000ac4                limits_init
  .text.limit_pressed
-                0x00000a3e       0x26 ./src/limit_switches.o
-                0x00000a3e                limit_pressed
+                0x00000b16       0x26 ./src/limit_switches.o
+                0x00000b16                limit_pressed
  .text.EINT0_IRQHandler
-                0x00000a64       0x2a ./src/limit_switches.o
-                0x00000a64                EINT0_IRQHandler
+                0x00000b3c       0x2a ./src/limit_switches.o
+                0x00000b3c                EINT0_IRQHandler
  .text.EINT1_IRQHandler
-                0x00000a8e       0x2a ./src/limit_switches.o
-                0x00000a8e                EINT1_IRQHandler
- .text.main     0x00000ab8       0x30 ./src/main.o
-                0x00000ab8                main
+                0x00000b66       0x2a ./src/limit_switches.o
+                0x00000b66                EINT1_IRQHandler
+ .text.main     0x00000b90       0x34 ./src/main.o
+                0x00000b90                main
  .text.NVIC_SetPriority
-                0x00000ae8       0x54 ./src/motor.o
+                0x00000bc4       0x54 ./src/motor.o
  .text.SysTick_Config
-                0x00000b3c       0x44 ./src/motor.o
+                0x00000c18       0x44 ./src/motor.o
  .text.motor_init
-                0x00000b80       0x30 ./src/motor.o
-                0x00000b80                motor_init
+                0x00000c5c       0x30 ./src/motor.o
+                0x00000c5c                motor_init
  .text.motor_configPins
-                0x00000bb0       0x62 ./src/motor.o
+                0x00000c8c       0x62 ./src/motor.o
  .text.applyDir
-                0x00000c12       0x2a ./src/motor.o
+                0x00000cee       0x2a ./src/motor.o
  .text.motor_move
-                0x00000c3c       0xb4 ./src/motor.o
-                0x00000c3c                motor_move
+                0x00000d18       0xb4 ./src/motor.o
+                0x00000d18                motor_move
  .text.motor_jog
-                0x00000cf0       0x94 ./src/motor.o
-                0x00000cf0                motor_jog
+                0x00000dcc       0x94 ./src/motor.o
+                0x00000dcc                motor_jog
  .text.motor_stop
-                0x00000d84       0x18 ./src/motor.o
-                0x00000d84                motor_stop
+                0x00000e60       0x18 ./src/motor.o
+                0x00000e60                motor_stop
  .text.motor_busy
-                0x00000d9c       0x20 ./src/motor.o
-                0x00000d9c                motor_busy
+                0x00000e78       0x20 ./src/motor.o
+                0x00000e78                motor_busy
  .text.motor_dir
-                0x00000dbc       0x18 ./src/motor.o
-                0x00000dbc                motor_dir
- .text.motor_position_mm
-                0x00000dd4       0x28 ./src/motor.o
-                0x00000dd4                motor_position_mm
+                0x00000e98       0x18 ./src/motor.o
+                0x00000e98                motor_dir
+ .text.motor_position_centimm
+                0x00000eb0       0x4c ./src/motor.o
+                0x00000eb0                motor_position_centimm
  .text.motor_set_position
-                0x00000dfc       0x1c ./src/motor.o
-                0x00000dfc                motor_set_position
+                0x00000efc       0x1c ./src/motor.o
+                0x00000efc                motor_set_position
  .text.motor_goto_steps
-                0x00000e18       0x40 ./src/motor.o
-                0x00000e18                motor_goto_steps
- .text.motor_goto_mm
-                0x00000e58       0x64 ./src/motor.o
-                0x00000e58                motor_goto_mm
+                0x00000f18       0x40 ./src/motor.o
+                0x00000f18                motor_goto_steps
+ .text.motor_goto_centimm
+                0x00000f58       0x50 ./src/motor.o
+                0x00000f58                motor_goto_centimm
  .text.motor_set_max_speed
-                0x00000ebc       0x34 ./src/motor.o
-                0x00000ebc                motor_set_max_speed
+                0x00000fa8       0x34 ./src/motor.o
+                0x00000fa8                motor_set_max_speed
  .text.SysTick_Handler
-                0x00000ef0      0x1bc ./src/motor.o
-                0x00000ef0                SysTick_Handler
+                0x00000fdc      0x1bc ./src/motor.o
+                0x00000fdc                SysTick_Handler
  .text.pot_init
-                0x000010ac       0x24 ./src/pot.o
-                0x000010ac                pot_init
+                0x00001198       0x24 ./src/pot.o
+                0x00001198                pot_init
  .text.pot_get_speed
-                0x000010d0       0x4c ./src/pot.o
-                0x000010d0                pot_get_speed
+                0x000011bc       0x4c ./src/pot.o
+                0x000011bc                pot_get_speed
  .text.SystemInit
-                0x0000111c       0xd8 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
-                0x0000111c                SystemInit
+                0x00001208       0xd8 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
+                0x00001208                SystemInit
  .text.ADC_Init
-                0x000011f4       0x50 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
-                0x000011f4                ADC_Init
+                0x000012e0       0x50 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+                0x000012e0                ADC_Init
  .text.ADC_PinConfig
-                0x00001244       0xe8 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
-                0x00001244                ADC_PinConfig
+                0x00001330       0xe8 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+                0x00001330                ADC_PinConfig
  .text.ADC_StartCmd
-                0x0000132c       0x2c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
-                0x0000132c                ADC_StartCmd
+                0x00001418       0x2c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+                0x00001418                ADC_StartCmd
  .text.ADC_ChannelEnable
-                0x00001358       0x28 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
-                0x00001358                ADC_ChannelEnable
+                0x00001444       0x28 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+                0x00001444                ADC_ChannelEnable
  .text.ADC_IntDisable
-                0x00001380       0x28 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
-                0x00001380                ADC_IntDisable
+                0x0000146c       0x28 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+                0x0000146c                ADC_IntDisable
  .text.ADC_ChannelGetStatus
-                0x000013a8       0x40 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
-                0x000013a8                ADC_ChannelGetStatus
+                0x00001494       0x40 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+                0x00001494                ADC_ChannelGetStatus
  .text.ADC_ChannelGetData
-                0x000013e8       0x24 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
-                0x000013e8                ADC_ChannelGetData
+                0x000014d4       0x24 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+                0x000014d4                ADC_ChannelGetData
  .text.CLKPWR_SetPCLKDiv
-                0x0000140c       0x4c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
-                0x0000140c                CLKPWR_SetPCLKDiv
+                0x000014f8       0x4c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
+                0x000014f8                CLKPWR_SetPCLKDiv
  .text.CLKPWR_GetPCLKSEL
-                0x00001458       0x20 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
-                0x00001458                CLKPWR_GetPCLKSEL
+                0x00001544       0x20 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
+                0x00001544                CLKPWR_GetPCLKSEL
  .text.CLKPWR_GetPCLK
-                0x00001478       0x24 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
-                0x00001478                CLKPWR_GetPCLK
+                0x00001564       0x24 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
+                0x00001564                CLKPWR_GetPCLK
  .text.CLKPWR_ConfigPPWR
-                0x0000149c       0x34 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
-                0x0000149c                CLKPWR_ConfigPPWR
+                0x00001588       0x34 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
+                0x00001588                CLKPWR_ConfigPPWR
  .text.EXTI_Init
-                0x000014d0       0x38 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
-                0x000014d0                EXTI_Init
+                0x000015bc       0x38 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
+                0x000015bc                EXTI_Init
  .text.EXTI_PinConfig
-                0x00001508       0x68 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
-                0x00001508                EXTI_PinConfig
+                0x000015f4       0x68 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
+                0x000015f4                EXTI_PinConfig
  .text.EXTI_Config
-                0x00001570       0x84 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
-                0x00001570                EXTI_Config
+                0x0000165c       0x84 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
+                0x0000165c                EXTI_Config
  .text.EXTI_ClearFlag
-                0x000015f4       0x24 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
-                0x000015f4                EXTI_ClearFlag
+                0x000016e0       0x24 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
+                0x000016e0                EXTI_ClearFlag
  .text.EXTI_EnableIRQ
-                0x00001618       0x40 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
-                0x00001618                EXTI_EnableIRQ
+                0x00001704       0x40 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
+                0x00001704                EXTI_EnableIRQ
  .text.EXTI_ConfigEnable
-                0x00001658       0x44 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
-                0x00001658                EXTI_ConfigEnable
+                0x00001744       0x44 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
+                0x00001744                EXTI_ConfigEnable
  .text.GPIO_SetDir
-                0x0000169c       0x3c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
-                0x0000169c                GPIO_SetDir
+                0x00001788       0x3c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+                0x00001788                GPIO_SetDir
  .text.GPIO_SetPins
-                0x000016d8       0x24 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
-                0x000016d8                GPIO_SetPins
+                0x000017c4       0x24 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+                0x000017c4                GPIO_SetPins
  .text.GPIO_ClearPins
-                0x000016fc       0x24 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
-                0x000016fc                GPIO_ClearPins
+                0x000017e8       0x24 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+                0x000017e8                GPIO_ClearPins
  .text.GPIO_ReadValue
-                0x00001720       0x24 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
-                0x00001720                GPIO_ReadValue
+                0x0000180c       0x24 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+                0x0000180c                GPIO_ReadValue
  .text.check_failed
-                0x00001744        0x2 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
-                0x00001744                check_failed
- *fill*         0x00001746        0x2 ff
+                0x00001830        0x2 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
+                0x00001830                check_failed
+ *fill*         0x00001832        0x2 ff
  .text.PINSEL_ConfigPin
-                0x00001748       0xc8 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
-                0x00001748                PINSEL_ConfigPin
+                0x00001834       0xc8 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
+                0x00001834                PINSEL_ConfigPin
  .text.QEI_Reset
-                0x00001810       0x38 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
-                0x00001810                QEI_Reset
+                0x000018fc       0x38 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
+                0x000018fc                QEI_Reset
  .text.QEI_Init
-                0x00001848       0x58 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
-                0x00001848                QEI_Init
+                0x00001934       0x58 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
+                0x00001934                QEI_Init
  .text.QEI_GetPosition
-                0x000018a0       0x20 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
-                0x000018a0                QEI_GetPosition
+                0x0000198c       0x20 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
+                0x0000198c                QEI_GetPosition
+ .text.QEI_SetMaxPosition
+                0x000019ac       0x20 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
+                0x000019ac                QEI_SetMaxPosition
  .text.QEI_SetTimerReload
-                0x000018c0       0x5c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
-                0x000018c0                QEI_SetTimerReload
+                0x000019cc       0x5c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
+                0x000019cc                QEI_SetTimerReload
  .text.UART_PinConfig
-                0x0000191c       0x28 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
-                0x0000191c                UART_PinConfig
+                0x00001a28       0x28 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+                0x00001a28                UART_PinConfig
  .text.UART_Init
-                0x00001944      0x22c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
-                0x00001944                UART_Init
+                0x00001a50      0x22c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+                0x00001a50                UART_Init
  .text.UART_FIFOConfig
-                0x00001b70       0x7c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
-                0x00001b70                UART_FIFOConfig
+                0x00001c7c       0x7c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+                0x00001c7c                UART_FIFOConfig
  .text.UART_SendByte
-                0x00001bec       0x3c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
-                0x00001bec                UART_SendByte
+                0x00001cf8       0x3c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+                0x00001cf8                UART_SendByte
  .text.UART_ReceiveByte
-                0x00001c28       0x38 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
-                0x00001c28                UART_ReceiveByte
+                0x00001d34       0x38 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+                0x00001d34                UART_ReceiveByte
  .text.UART_Send
-                0x00001c60       0x4e C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
-                0x00001c60                UART_Send
+                0x00001d6c       0x4e C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+                0x00001d6c                UART_Send
  .text.UART_Receive
-                0x00001cae       0x3e C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
-                0x00001cae                UART_Receive
+                0x00001dba       0x3e C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+                0x00001dba                UART_Receive
  .text.UART_GetIntId
-                0x00001cec       0x40 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
-                0x00001cec                UART_GetIntId
+                0x00001df8       0x40 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+                0x00001df8                UART_GetIntId
  .text.UART_GetLineStatus
-                0x00001d2c       0x38 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
-                0x00001d2c                UART_GetLineStatus
+                0x00001e38       0x38 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+                0x00001e38                UART_GetLineStatus
  .text.UART_IntConfig
-                0x00001d64       0x94 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
-                0x00001d64                UART_IntConfig
+                0x00001e70       0x94 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+                0x00001e70                UART_IntConfig
  .text.UART_TxEnable
-                0x00001df8       0x44 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
-                0x00001df8                UART_TxEnable
+                0x00001f04       0x44 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+                0x00001f04                UART_TxEnable
  .text.__weak_main
-                0x00001e3c        0x4 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
-                0x00001e3c                __weak_main
-                0x00001e3c                __main
- .text.strlen   0x00001e40       0x4e C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
-                0x00001e40                strlen
+                0x00001f48        0x4 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+                0x00001f48                __weak_main
+                0x00001f48                __main
+ .text.strlen   0x00001f4c       0x4e C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
+                0x00001f4c                strlen
  .text.__aeabi_division_uldivmod
-                0x00001e8e      0x174 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_64.o)
-                0x00001e8e                __aeabi_uldivmod
-                0x00001e92                __bhs_ldivmod1
+                0x00001f9a      0x174 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_64.o)
+                0x00001f9a                __aeabi_uldivmod
+                0x00001f9e                __bhs_ldivmod1
  .text.__aeabi_division_idiv0
-                0x00002002        0x2 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_idiv0.o)
-                0x00002002                __aeabi_idiv0
- .text.__aeabi_fmul
-                0x00002004       0xac C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                0x00002004                __aeabi_fmul
- .text.__aeabi_fdiv
-                0x000020b0       0xbc C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                0x000020b0                __aeabi_fdiv
- .text.__aeabi_fsub
-                0x0000216c       0xe4 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                0x0000216c                __aeabi_fsub
- .text.__aeabi_fadd
-                0x00002250       0xb8 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                0x00002250                __aeabi_fadd
- .text.__aeabi_f2iz
-                0x00002308       0x34 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                0x00002308                __aeabi_f2iz
- .text.__bhs_ui2f
-                0x0000233c       0x26 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                0x0000233c                __bhs_ui2f
- .text.__aeabi_i2f
-                0x00002362       0x10 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                0x00002362                __aeabi_i2f
- .text.__aeabi_ui2f
-                0x00002372        0x8 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                0x00002372                __aeabi_ui2f
- .text.__aeabi_fcmplt
-                0x0000237a       0x3a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                0x0000237a                __aeabi_fcmplt
- .text.__aeabi_fcmpge
-                0x000023b4       0x3e C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                0x000023b4                __aeabi_fcmpge
+                0x0000210e        0x2 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_idiv0.o)
+                0x0000210e                __aeabi_idiv0
  *(.rodata .rodata.* .constdata .constdata.*)
- *fill*         0x000023f2        0x2 ff
  .rodata.comms_task.str1.4
-                0x000023f4       0x4f ./src/comms.o
- *fill*         0x00002443        0x1 ff
+                0x00002110       0x4f ./src/comms.o
+ *fill*         0x0000215f        0x1 ff
  .rodata.tabla_velocidades
-                0x00002444       0x10 ./src/pot.o
+                0x00002160       0x10 ./src/pot.o
  .rodata.ADC_Init.str1.1
-                0x00002454       0x5a C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+                0x00002170       0x5a C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
                                   0xe (size before relaxing)
  .rodata.CSWTCH.5
-                0x000024ae        0x3 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
+                0x000021ca        0x3 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
  .rodata.EXTI_PinConfig.str1.1
-                0x000024b1        0xf C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
+                0x000021cd        0xf C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
  .rodata.GPIO_SetDir.str1.1
-                0x000024b1        0xf C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+                0x000021cd        0xf C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
  .rodata.PINSEL_ConfigPin.str1.1
-                0x000024b1       0x11 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
+                0x000021cd       0x11 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
  .rodata.QEI_Reset.str1.1
-                0x000024b1        0xe C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
+                0x000021cd        0xe C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
  .rodata.UART_PinConfig.str1.1
-                0x000024b1        0xf C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
- *fill*         0x000024b1        0x1 ff
+                0x000021cd        0xf C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+ *fill*         0x000021cd        0x1 ff
  .rodata.CSWTCH.33
-                0x000024b2        0xe C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+                0x000021ce        0xe C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
  .rodata.PinCfg.0
-                0x000024c0       0x50 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
-                0x00002510                        . = ALIGN (0x4)
+                0x000021dc       0x50 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+                0x0000222c                        . = ALIGN (0x4)
 
-.glue_7         0x00002510        0x0
- .glue_7        0x00002510        0x0 linker stubs
+.glue_7         0x0000222c        0x0
+ .glue_7        0x0000222c        0x0 linker stubs
 
-.glue_7t        0x00002510        0x0
- .glue_7t       0x00002510        0x0 linker stubs
+.glue_7t        0x0000222c        0x0
+ .glue_7t       0x0000222c        0x0 linker stubs
 
-.vfp11_veneer   0x00002510        0x0
- .vfp11_veneer  0x00002510        0x0 linker stubs
+.vfp11_veneer   0x0000222c        0x0
+ .vfp11_veneer  0x0000222c        0x0 linker stubs
 
-.v4_bx          0x00002510        0x0
- .v4_bx         0x00002510        0x0 linker stubs
+.v4_bx          0x0000222c        0x0
+ .v4_bx         0x0000222c        0x0 linker stubs
 
-.iplt           0x00002510        0x0
- .iplt          0x00002510        0x0 ./src/comms.o
+.iplt           0x0000222c        0x0
+ .iplt          0x0000222c        0x0 ./src/comms.o
 
-.rel.dyn        0x00002510        0x0
- .rel.iplt      0x00002510        0x0 ./src/comms.o
+.rel.dyn        0x0000222c        0x0
+ .rel.iplt      0x0000222c        0x0 ./src/comms.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM.exidx      0x00002510        0x0
-                0x00002510                        __exidx_start = .
+.ARM.exidx      0x0000222c        0x0
+                0x0000222c                        __exidx_start = .
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00002510                        __exidx_end = .
-                0x00002510                        _etext = .
+                0x0000222c                        __exidx_end = .
+                0x0000222c                        _etext = .
 
-.data_RAM2      0x2007c000        0x0 load address 0x00002510
+.data_RAM2      0x2007c000        0x0 load address 0x0000222c
  FILL mask 0xff
                 [!provide]                        PROVIDE (__start_data_RAM2 = .)
                 [!provide]                        PROVIDE (__start_data_RamAHB32 = .)
@@ -1118,7 +1056,7 @@ END GROUP
                 0x10000000                        . = ALIGN (0x4)
                 0x10000000                        _end_uninit_RESERVED = .
 
-.data           0x10000000        0xc load address 0x00002510
+.data           0x10000000        0xc load address 0x0000222c
  FILL mask 0xff
                 0x10000000                        _data = .
                 [!provide]                        PROVIDE (__start_data_RAM = .)
@@ -1140,7 +1078,7 @@ END GROUP
                 [!provide]                        PROVIDE (__end_data_RAM = .)
                 [!provide]                        PROVIDE (__end_data_RamLoc32 = .)
 
-.igot.plt       0x1000000c        0x0 load address 0x0000251c
+.igot.plt       0x1000000c        0x0 load address 0x00002238
  .igot.plt      0x1000000c        0x0 ./src/comms.o
 
 .bss_RAM2       0x2007c000        0x0
@@ -1154,7 +1092,7 @@ END GROUP
                 [!provide]                        PROVIDE (__end_bss_RAM2 = .)
                 [!provide]                        PROVIDE (__end_bss_RamAHB32 = .)
 
-.bss            0x1000000c       0x44
+.bss            0x1000000c       0x6c
                 0x1000000c                        _bss = .
                 [!provide]                        PROVIDE (__start_bss_RAM = .)
                 [!provide]                        PROVIDE (__start_bss_RamLoc32 = .)
@@ -1164,24 +1102,44 @@ END GROUP
  .bss.lineReady
                 0x1000002d        0x1 ./src/comms.o
  *fill*         0x1000002e        0x2 
+ .bss.dbg_pconp_qei
+                0x10000030        0x4 ./src/encoder.o
+ .bss.dbg_pinsel3
+                0x10000034        0x4 ./src/encoder.o
+ .bss.dbg_pin_pha
+                0x10000038        0x4 ./src/encoder.o
+ .bss.dbg_pin_phb
+                0x1000003c        0x4 ./src/encoder.o
+ .bss.dbg_pin_idx
+                0x10000040        0x4 ./src/encoder.o
+ .bss.dbg_qeiconf
+                0x10000044        0x4 ./src/encoder.o
+ .bss.dbg_qeimaxpos
+                0x10000048        0x4 ./src/encoder.o
+ .bss.dbg_qeipos
+                0x1000004c        0x4 ./src/encoder.o
+ .bss.dbg_pha_level
+                0x10000050        0x4 ./src/encoder.o
+ .bss.dbg_phb_level
+                0x10000054        0x4 ./src/encoder.o
  .bss.stepsToGo
-                0x10000030        0x4 ./src/motor.o
+                0x10000058        0x4 ./src/motor.o
  .bss.stepsDone
-                0x10000034        0x4 ./src/motor.o
+                0x1000005c        0x4 ./src/motor.o
  .bss.accelSteps
-                0x10000038        0x4 ./src/motor.o
- .bss.position  0x1000003c        0x4 ./src/motor.o
- .bss.vel_fp    0x10000040        0x4 ./src/motor.o
- .bss.interval  0x10000044        0x4 ./src/motor.o
- .bss.tickCnt   0x10000048        0x4 ./src/motor.o
+                0x10000060        0x4 ./src/motor.o
+ .bss.position  0x10000064        0x4 ./src/motor.o
+ .bss.vel_fp    0x10000068        0x4 ./src/motor.o
+ .bss.interval  0x1000006c        0x4 ./src/motor.o
+ .bss.tickCnt   0x10000070        0x4 ./src/motor.o
  .bss.pulseHigh
-                0x1000004c        0x1 ./src/motor.o
- .bss.decel     0x1000004d        0x1 ./src/motor.o
- .bss.jogMode   0x1000004e        0x1 ./src/motor.o
+                0x10000074        0x1 ./src/motor.o
+ .bss.decel     0x10000075        0x1 ./src/motor.o
+ .bss.jogMode   0x10000076        0x1 ./src/motor.o
  *(COMMON)
-                0x10000050                        . = ALIGN (0x4)
- *fill*         0x1000004f        0x1 
-                0x10000050                        _ebss = .
+                0x10000078                        . = ALIGN (0x4)
+ *fill*         0x10000077        0x1 
+                0x10000078                        _ebss = .
                 [!provide]                        PROVIDE (__end_bss_RAM = .)
                 [!provide]                        PROVIDE (__end_bss_RamLoc32 = .)
                 [!provide]                        PROVIDE (end = .)
@@ -1197,71 +1155,69 @@ END GROUP
                 [!provide]                        PROVIDE (__end_noinit_RAM2 = .)
                 [!provide]                        PROVIDE (__end_noinit_RamAHB32 = .)
 
-.noinit         0x10000050        0x0
-                0x10000050                        _noinit = .
+.noinit         0x10000078        0x0
+                0x10000078                        _noinit = .
                 [!provide]                        PROVIDE (__start_noinit_RAM = .)
                 [!provide]                        PROVIDE (__start_noinit_RamLoc32 = .)
  *(.noinit*)
-                0x10000050                        . = ALIGN (0x4)
-                0x10000050                        _end_noinit = .
+                0x10000078                        . = ALIGN (0x4)
+                0x10000078                        _end_noinit = .
                 [!provide]                        PROVIDE (__end_noinit_RAM = .)
                 [!provide]                        PROVIDE (__end_noinit_RamLoc32 = .)
                 [!provide]                        PROVIDE (_pvHeapStart = DEFINED (__user_heap_base)?__user_heap_base:.)
                 0x10008000                        PROVIDE (_vStackTop = DEFINED (__user_stack_top)?__user_stack_top:(__top_RamLoc32 - 0x0))
                 0xefff749e                        PROVIDE (__valid_user_code_checksum = (0x0 - ((((((_vStackTop + (ResetISR + 0x1)) + (NMI_Handler + 0x1)) + (HardFault_Handler + 0x1)) + (DEFINED (MemManage_Handler)?MemManage_Handler:0x0 + 0x1)) + (DEFINED (BusFault_Handler)?BusFault_Handler:0x0 + 0x1)) + (DEFINED (UsageFault_Handler)?UsageFault_Handler:0x0 + 0x1))))
                 0x00000000                        _image_start = LOADADDR (.text)
-                0x0000251c                        _image_end = (LOADADDR (.data) + SIZEOF (.data))
-                0x0000251c                        _image_size = (_image_end - _image_start)
+                0x00002238                        _image_end = (LOADADDR (.data) + SIZEOF (.data))
+                0x00002238                        _image_size = (_image_end - _image_start)
 OUTPUT(tp-final.axf elf32-littlearm)
 LOAD linker stubs
 
-.debug_info     0x00000000     0xbe24
- .debug_info    0x00000000      0xe1b ./src/comms.o
- .debug_info    0x00000e1b      0x2a5 ./src/cr_startup_lpc175x_6x.o
- .debug_info    0x000010c0       0x40 ./src/crp.o
- .debug_info    0x00001100      0x633 ./src/encoder.o
- .debug_info    0x00001733      0x10f ./src/homing.o
- .debug_info    0x00001842      0x6b5 ./src/limit_switches.o
- .debug_info    0x00001ef7       0xf8 ./src/main.o
- .debug_info    0x00001fef      0xab8 ./src/motor.o
- .debug_info    0x00002aa7      0x2cb ./src/pot.o
- .debug_info    0x00002d72      0x347 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
- .debug_info    0x000030b9      0x930 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
- .debug_info    0x000039e9      0x6ca C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
- .debug_info    0x000040b3      0xcc9 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
- .debug_info    0x00004d7c     0x2268 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
- .debug_info    0x00006fe4       0xd4 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
- .debug_info    0x000070b8      0x8ab C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
- .debug_info    0x00007963      0xcaf C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
- .debug_info    0x00008612     0x1c17 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
- .debug_info    0x0000a229       0x4a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
- .debug_info    0x0000a273       0xe1 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
- .debug_info    0x0000a354     0x1ad0 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
+.debug_info     0x00000000     0xab5a
+ .debug_info    0x00000000      0xe31 ./src/comms.o
+ .debug_info    0x00000e31      0x2a5 ./src/cr_startup_lpc175x_6x.o
+ .debug_info    0x000010d6       0x40 ./src/crp.o
+ .debug_info    0x00001116      0xe0d ./src/encoder.o
+ .debug_info    0x00001f23      0x10f ./src/homing.o
+ .debug_info    0x00002032      0x6b5 ./src/limit_switches.o
+ .debug_info    0x000026e7      0x100 ./src/main.o
+ .debug_info    0x000027e7      0xac6 ./src/motor.o
+ .debug_info    0x000032ad      0x2cb ./src/pot.o
+ .debug_info    0x00003578      0x347 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
+ .debug_info    0x000038bf      0x930 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+ .debug_info    0x000041ef      0x6ca C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
+ .debug_info    0x000048b9      0xcc9 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
+ .debug_info    0x00005582     0x2268 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+ .debug_info    0x000077ea       0xd4 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
+ .debug_info    0x000078be      0x8ab C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
+ .debug_info    0x00008169      0xcaf C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
+ .debug_info    0x00008e18     0x1c17 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+ .debug_info    0x0000aa2f       0x4a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+ .debug_info    0x0000aa79       0xe1 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
-.debug_abbrev   0x00000000     0x249a
+.debug_abbrev   0x00000000     0x21dc
  .debug_abbrev  0x00000000      0x2ca ./src/comms.o
  .debug_abbrev  0x000002ca      0x14d ./src/cr_startup_lpc175x_6x.o
  .debug_abbrev  0x00000417       0x38 ./src/crp.o
- .debug_abbrev  0x0000044f      0x1dd ./src/encoder.o
- .debug_abbrev  0x0000062c       0xb3 ./src/homing.o
- .debug_abbrev  0x000006df      0x224 ./src/limit_switches.o
- .debug_abbrev  0x00000903       0x9c ./src/main.o
- .debug_abbrev  0x0000099f      0x2c6 ./src/motor.o
- .debug_abbrev  0x00000c65      0x10b ./src/pot.o
- .debug_abbrev  0x00000d70      0x10e C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
- .debug_abbrev  0x00000e7e      0x205 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
- .debug_abbrev  0x00001083      0x202 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
- .debug_abbrev  0x00001285      0x257 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
- .debug_abbrev  0x000014dc      0x300 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
- .debug_abbrev  0x000017dc       0x75 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
- .debug_abbrev  0x00001851      0x20b C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
- .debug_abbrev  0x00001a5c      0x29c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
- .debug_abbrev  0x00001cf8      0x34d C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
- .debug_abbrev  0x00002045       0x4f C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
- .debug_abbrev  0x00002094       0xa7 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
- .debug_abbrev  0x0000213b      0x35f C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
+ .debug_abbrev  0x0000044f      0x26b ./src/encoder.o
+ .debug_abbrev  0x000006ba       0xb3 ./src/homing.o
+ .debug_abbrev  0x0000076d      0x224 ./src/limit_switches.o
+ .debug_abbrev  0x00000991       0x9c ./src/main.o
+ .debug_abbrev  0x00000a2d      0x2d9 ./src/motor.o
+ .debug_abbrev  0x00000d06      0x10b ./src/pot.o
+ .debug_abbrev  0x00000e11      0x10e C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
+ .debug_abbrev  0x00000f1f      0x205 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+ .debug_abbrev  0x00001124      0x202 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
+ .debug_abbrev  0x00001326      0x257 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
+ .debug_abbrev  0x0000157d      0x300 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+ .debug_abbrev  0x0000187d       0x75 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
+ .debug_abbrev  0x000018f2      0x20b C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
+ .debug_abbrev  0x00001afd      0x29c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
+ .debug_abbrev  0x00001d99      0x34d C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+ .debug_abbrev  0x000020e6       0x4f C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+ .debug_abbrev  0x00002135       0xa7 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
-.debug_aranges  0x00000000      0x880
+.debug_aranges  0x00000000      0x7a8
  .debug_aranges
                 0x00000000       0x58 ./src/comms.o
  .debug_aranges
@@ -1269,65 +1225,62 @@ LOAD linker stubs
  .debug_aranges
                 0x000000d8       0x18 ./src/crp.o
  .debug_aranges
-                0x000000f0       0x38 ./src/encoder.o
+                0x000000f0       0x40 ./src/encoder.o
  .debug_aranges
-                0x00000128       0x20 ./src/homing.o
+                0x00000130       0x20 ./src/homing.o
  .debug_aranges
-                0x00000148       0x40 ./src/limit_switches.o
+                0x00000150       0x40 ./src/limit_switches.o
  .debug_aranges
-                0x00000188       0x20 ./src/main.o
+                0x00000190       0x20 ./src/main.o
  .debug_aranges
-                0x000001a8       0xa0 ./src/motor.o
+                0x000001b0       0xa0 ./src/motor.o
  .debug_aranges
-                0x00000248       0x28 ./src/pot.o
+                0x00000250       0x28 ./src/pot.o
  .debug_aranges
-                0x00000270       0x28 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
+                0x00000278       0x28 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
  .debug_aranges
-                0x00000298       0xa0 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+                0x000002a0       0xa0 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
  .debug_aranges
-                0x00000338       0x58 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
+                0x00000340       0x58 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
  .debug_aranges
-                0x00000390       0x50 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
+                0x00000398       0x50 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
  .debug_aranges
-                0x000003e0      0x158 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+                0x000003e8      0x158 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
  .debug_aranges
-                0x00000538       0x20 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
+                0x00000540       0x20 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
  .debug_aranges
-                0x00000558       0x38 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
+                0x00000560       0x38 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
  .debug_aranges
-                0x00000590       0xc0 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
+                0x00000598       0xc0 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
  .debug_aranges
-                0x00000650      0x110 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+                0x00000658      0x110 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
  .debug_aranges
-                0x00000760       0x20 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+                0x00000768       0x20 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
  .debug_aranges
-                0x00000780       0x20 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
- .debug_aranges
-                0x000007a0       0xe0 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
+                0x00000788       0x20 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
-.debug_ranges   0x00000000      0x9b8
+.debug_ranges   0x00000000      0x7d0
  .debug_ranges  0x00000000       0x48 ./src/comms.o
  .debug_ranges  0x00000048       0x70 ./src/cr_startup_lpc175x_6x.o
- .debug_ranges  0x000000b8       0x28 ./src/encoder.o
- .debug_ranges  0x000000e0       0x10 ./src/homing.o
- .debug_ranges  0x000000f0       0x30 ./src/limit_switches.o
- .debug_ranges  0x00000120       0x10 ./src/main.o
- .debug_ranges  0x00000130       0x90 ./src/motor.o
- .debug_ranges  0x000001c0       0x18 ./src/pot.o
- .debug_ranges  0x000001d8       0x18 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
- .debug_ranges  0x000001f0       0x90 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
- .debug_ranges  0x00000280       0x48 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
- .debug_ranges  0x000002c8       0x70 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
- .debug_ranges  0x00000338      0x1f0 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
- .debug_ranges  0x00000528       0x10 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
- .debug_ranges  0x00000538       0x78 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
- .debug_ranges  0x000005b0       0xb0 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
- .debug_ranges  0x00000660      0x148 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
- .debug_ranges  0x000007a8       0x10 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
- .debug_ranges  0x000007b8       0x10 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
- .debug_ranges  0x000007c8      0x1f0 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
+ .debug_ranges  0x000000b8       0x30 ./src/encoder.o
+ .debug_ranges  0x000000e8       0x10 ./src/homing.o
+ .debug_ranges  0x000000f8       0x30 ./src/limit_switches.o
+ .debug_ranges  0x00000128       0x10 ./src/main.o
+ .debug_ranges  0x00000138       0x90 ./src/motor.o
+ .debug_ranges  0x000001c8       0x18 ./src/pot.o
+ .debug_ranges  0x000001e0       0x18 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
+ .debug_ranges  0x000001f8       0x90 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+ .debug_ranges  0x00000288       0x48 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
+ .debug_ranges  0x000002d0       0x70 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
+ .debug_ranges  0x00000340      0x1f0 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+ .debug_ranges  0x00000530       0x10 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
+ .debug_ranges  0x00000540       0x78 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
+ .debug_ranges  0x000005b8       0xb0 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
+ .debug_ranges  0x00000668      0x148 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+ .debug_ranges  0x000007b0       0x10 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+ .debug_ranges  0x000007c0       0x10 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
-.debug_macro    0x00000000     0x4492
+.debug_macro    0x00000000     0x482c
  .debug_macro   0x00000000       0xda ./src/comms.o
  .debug_macro   0x000000da      0xade ./src/comms.o
  .debug_macro   0x00000bb8       0x10 ./src/comms.o
@@ -1344,21 +1297,21 @@ LOAD linker stubs
  .debug_macro   0x0000216b       0x1d ./src/cr_startup_lpc175x_6x.o
  .debug_macro   0x00002188       0x1a ./src/crp.o
  .debug_macro   0x000021a2       0x34 ./src/crp.o
- .debug_macro   0x000021d6       0xc5 ./src/encoder.o
- .debug_macro   0x0000229b       0x1c ./src/encoder.o
- .debug_macro   0x000022b7      0x2c7 ./src/encoder.o
- .debug_macro   0x0000257e       0x16 ./src/encoder.o
- .debug_macro   0x00002594       0x4c ./src/encoder.o
- .debug_macro   0x000025e0      0x39a ./src/encoder.o
- .debug_macro   0x0000297a       0x68 ./src/homing.o
- .debug_macro   0x000029e2       0x22 ./src/homing.o
- .debug_macro   0x00002a04       0x16 ./src/homing.o
- .debug_macro   0x00002a1a       0xbd ./src/limit_switches.o
- .debug_macro   0x00002ad7       0x10 ./src/limit_switches.o
- .debug_macro   0x00002ae7       0x28 ./src/limit_switches.o
- .debug_macro   0x00002b0f       0x64 ./src/limit_switches.o
- .debug_macro   0x00002b73       0x7c ./src/main.o
- .debug_macro   0x00002bef      0x124 ./src/motor.o
+ .debug_macro   0x000021d6       0xbf ./src/encoder.o
+ .debug_macro   0x00002295       0x16 ./src/encoder.o
+ .debug_macro   0x000022ab       0x4c ./src/encoder.o
+ .debug_macro   0x000022f7      0x3a0 ./src/encoder.o
+ .debug_macro   0x00002697       0x68 ./src/homing.o
+ .debug_macro   0x000026ff       0x22 ./src/homing.o
+ .debug_macro   0x00002721       0x16 ./src/homing.o
+ .debug_macro   0x00002737       0xbd ./src/limit_switches.o
+ .debug_macro   0x000027f4       0x10 ./src/limit_switches.o
+ .debug_macro   0x00002804       0x28 ./src/limit_switches.o
+ .debug_macro   0x0000282c       0x64 ./src/limit_switches.o
+ .debug_macro   0x00002890       0x7c ./src/main.o
+ .debug_macro   0x0000290c      0x124 ./src/motor.o
+ .debug_macro   0x00002a30       0x1c ./src/motor.o
+ .debug_macro   0x00002a4c      0x2c7 ./src/motor.o
  .debug_macro   0x00002d13       0x2e ./src/motor.o
  .debug_macro   0x00002d41       0x9d ./src/pot.o
  .debug_macro   0x00002dde       0xe1 ./src/pot.o
@@ -1375,54 +1328,53 @@ LOAD linker stubs
  .debug_macro   0x000041b2       0xd7 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
  .debug_macro   0x00004289       0x9f C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
  .debug_macro   0x00004328       0xa9 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
- .debug_macro   0x000043d1       0xc1 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+ .debug_macro   0x000043d1      0x39a C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
+ .debug_macro   0x0000476b       0xc1 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
 
-.debug_line     0x00000000     0x7695
- .debug_line    0x00000000      0x6c5 ./src/comms.o
- .debug_line    0x000006c5      0x11e ./src/cr_startup_lpc175x_6x.o
- .debug_line    0x000007e3       0xae ./src/crp.o
- .debug_line    0x00000891      0x3ab ./src/encoder.o
- .debug_line    0x00000c3c      0x227 ./src/homing.o
- .debug_line    0x00000e63      0x419 ./src/limit_switches.o
- .debug_line    0x0000127c      0x21a ./src/main.o
- .debug_line    0x00001496      0x6f0 ./src/motor.o
- .debug_line    0x00001b86      0x32b ./src/pot.o
- .debug_line    0x00001eb1      0x40c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
- .debug_line    0x000022bd      0x734 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
- .debug_line    0x000029f1      0x455 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
- .debug_line    0x00002e46      0x581 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
- .debug_line    0x000033c7      0xed4 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
- .debug_line    0x0000429b      0x213 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
- .debug_line    0x000044ae      0x4b1 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
- .debug_line    0x0000495f      0x869 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
- .debug_line    0x000051c8     0x1052 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
- .debug_line    0x0000621a       0x4a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
- .debug_line    0x00006264      0x141 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
- .debug_line    0x000063a5     0x12f0 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
+.debug_line     0x00000000     0x6479
+ .debug_line    0x00000000      0x6e3 ./src/comms.o
+ .debug_line    0x000006e3      0x11e ./src/cr_startup_lpc175x_6x.o
+ .debug_line    0x00000801       0xae ./src/crp.o
+ .debug_line    0x000008af      0x442 ./src/encoder.o
+ .debug_line    0x00000cf1      0x227 ./src/homing.o
+ .debug_line    0x00000f18      0x419 ./src/limit_switches.o
+ .debug_line    0x00001331      0x21b ./src/main.o
+ .debug_line    0x0000154c      0x70e ./src/motor.o
+ .debug_line    0x00001c5a      0x32b ./src/pot.o
+ .debug_line    0x00001f85      0x40c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
+ .debug_line    0x00002391      0x734 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+ .debug_line    0x00002ac5      0x455 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
+ .debug_line    0x00002f1a      0x581 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
+ .debug_line    0x0000349b      0xed4 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+ .debug_line    0x0000436f      0x213 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
+ .debug_line    0x00004582      0x4b1 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
+ .debug_line    0x00004a33      0x869 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
+ .debug_line    0x0000529c     0x1052 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+ .debug_line    0x000062ee       0x4a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+ .debug_line    0x00006338      0x141 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
-.debug_str      0x00000000    0x10a50
- .debug_str     0x00000000    0x10a50 ./src/comms.o
-                               0xa75a (size before relaxing)
- .debug_str     0x00010a50     0x3096 ./src/cr_startup_lpc175x_6x.o
- .debug_str     0x00010a50     0x2f7f ./src/crp.o
- .debug_str     0x00010a50     0xa5ac ./src/encoder.o
- .debug_str     0x00010a50     0x469b ./src/homing.o
- .debug_str     0x00010a50     0x92e2 ./src/limit_switches.o
- .debug_str     0x00010a50     0x46b1 ./src/main.o
- .debug_str     0x00010a50     0x97c9 ./src/motor.o
- .debug_str     0x00010a50     0x9028 ./src/pot.o
- .debug_str     0x00010a50     0x8a4f C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
- .debug_str     0x00010a50     0xa615 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
- .debug_str     0x00010a50     0x9c49 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
- .debug_str     0x00010a50     0x911b C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
- .debug_str     0x00010a50     0x94c8 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
- .debug_str     0x00010a50     0x4876 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
- .debug_str     0x00010a50     0x9001 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
- .debug_str     0x00010a50     0xb61c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
- .debug_str     0x00010a50     0xc184 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
- .debug_str     0x00010a50      0x126 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
- .debug_str     0x00010a50      0x17a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
- .debug_str     0x00010a50      0x361 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
+.debug_str      0x00000000    0x108a5
+ .debug_str     0x00000000    0x108a5 ./src/comms.o
+                               0xa760 (size before relaxing)
+ .debug_str     0x000108a5     0x3096 ./src/cr_startup_lpc175x_6x.o
+ .debug_str     0x000108a5     0x2f7f ./src/crp.o
+ .debug_str     0x000108a5     0xa9dc ./src/encoder.o
+ .debug_str     0x000108a5     0x469a ./src/homing.o
+ .debug_str     0x000108a5     0x92e2 ./src/limit_switches.o
+ .debug_str     0x000108a5     0x46c6 ./src/main.o
+ .debug_str     0x000108a5     0x97cd ./src/motor.o
+ .debug_str     0x000108a5     0x9028 ./src/pot.o
+ .debug_str     0x000108a5     0x8a4f C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
+ .debug_str     0x000108a5     0xa615 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+ .debug_str     0x000108a5     0x9c49 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
+ .debug_str     0x000108a5     0x911b C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
+ .debug_str     0x000108a5     0x94c8 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+ .debug_str     0x000108a5     0x4876 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
+ .debug_str     0x000108a5     0x9001 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
+ .debug_str     0x000108a5     0xb61c C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
+ .debug_str     0x000108a5     0xc184 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+ .debug_str     0x000108a5      0x126 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+ .debug_str     0x000108a5      0x17a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
 .comment        0x00000000       0x45
  .comment       0x00000000       0x45 ./src/comms.o
@@ -1446,7 +1398,6 @@ LOAD linker stubs
  .comment       0x00000045       0x46 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
  .comment       0x00000045       0x46 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
  .comment       0x00000045       0x46 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
- .comment       0x00000045       0x46 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
 
 .ARM.attributes
                 0x00000000       0x2b
@@ -1494,32 +1445,29 @@ LOAD linker stubs
                 0x00000384       0x1b C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_64.o)
  .ARM.attributes
                 0x0000039f       0x1b C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_idiv0.o)
- .ARM.attributes
-                0x000003ba       0x2d C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
 
-.debug_frame    0x00000000     0x1650
+.debug_frame    0x00000000     0x1464
  .debug_frame   0x00000000      0x13c ./src/comms.o
  .debug_frame   0x0000013c      0x170 ./src/cr_startup_lpc175x_6x.o
- .debug_frame   0x000002ac       0x98 ./src/encoder.o
- .debug_frame   0x00000344       0x2c ./src/homing.o
- .debug_frame   0x00000370       0xb8 ./src/limit_switches.o
- .debug_frame   0x00000428       0x2c ./src/main.o
- .debug_frame   0x00000454      0x260 ./src/motor.o
- .debug_frame   0x000006b4       0x50 ./src/pot.o
- .debug_frame   0x00000704       0x38 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
- .debug_frame   0x0000073c      0x174 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
- .debug_frame   0x000008b0       0xa0 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
- .debug_frame   0x00000950       0xbc C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
- .debug_frame   0x00000a0c      0x3e0 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
- .debug_frame   0x00000dec       0x20 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
- .debug_frame   0x00000e0c       0x84 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
- .debug_frame   0x00000e90      0x240 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
- .debug_frame   0x000010d0      0x320 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
- .debug_frame   0x000013f0       0x20 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
- .debug_frame   0x00001410       0x28 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
- .debug_frame   0x00001438      0x218 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
+ .debug_frame   0x000002ac       0xb8 ./src/encoder.o
+ .debug_frame   0x00000364       0x2c ./src/homing.o
+ .debug_frame   0x00000390       0xb8 ./src/limit_switches.o
+ .debug_frame   0x00000448       0x2c ./src/main.o
+ .debug_frame   0x00000474      0x26c ./src/motor.o
+ .debug_frame   0x000006e0       0x50 ./src/pot.o
+ .debug_frame   0x00000730       0x38 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
+ .debug_frame   0x00000768      0x174 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+ .debug_frame   0x000008dc       0xa0 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
+ .debug_frame   0x0000097c       0xbc C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
+ .debug_frame   0x00000a38      0x3e0 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+ .debug_frame   0x00000e18       0x20 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
+ .debug_frame   0x00000e38       0x84 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
+ .debug_frame   0x00000ebc      0x240 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
+ .debug_frame   0x000010fc      0x320 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+ .debug_frame   0x0000141c       0x20 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+ .debug_frame   0x0000143c       0x28 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
-.debug_loc      0x00000000     0x6c84
+.debug_loc      0x00000000     0x42bf
  .debug_loc     0x00000000      0x42a C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
  .debug_loc     0x0000042a      0x21b C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
  .debug_loc     0x00000645      0x2d3 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_exti.o)
@@ -1529,7 +1477,6 @@ LOAD linker stubs
  .debug_loc     0x0000282d      0x7e1 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
  .debug_loc     0x0000300e     0x11c1 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
  .debug_loc     0x000041cf       0xf0 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
- .debug_loc     0x000042bf     0x29c5 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
 
 Cross Reference Table
 
@@ -1687,6 +1634,7 @@ QEI_Reset                                         C:\Users\danie\Documents\MCUXp
 QEI_SetDigiFilter                                 C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
 QEI_SetIndexComp                                  C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
 QEI_SetMaxPosition                                C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
+                                                  ./src/encoder.o
 QEI_SetPositionComp                               C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
 QEI_SetTimerReload                                C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
                                                   ./src/encoder.o
@@ -1758,54 +1706,13 @@ USBActivity_IRQHandler                            ./src/cr_startup_lpc175x_6x.o
 USB_IRQHandler                                    ./src/cr_startup_lpc175x_6x.o
 UsageFault_Handler                                ./src/cr_startup_lpc175x_6x.o
 WDT_IRQHandler                                    ./src/cr_startup_lpc175x_6x.o
-__aeabi_cfcmpeq                                   C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-__aeabi_cfcmple                                   C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-__aeabi_cfrcmple                                  C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-__aeabi_f2d                                       C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-__aeabi_f2iz                                      C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                                                  ./src/motor.o
-                                                  ./src/comms.o
-__aeabi_f2lz                                      C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-__aeabi_f2uiz                                     C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-__aeabi_f2ulz                                     C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-__aeabi_fadd                                      C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                                                  ./src/motor.o
-                                                  ./src/comms.o
-__aeabi_fcmpeq                                    C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-__aeabi_fcmpge                                    C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                                                  ./src/motor.o
-__aeabi_fcmpgt                                    C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-__aeabi_fcmple                                    C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-__aeabi_fcmplt                                    C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                                                  ./src/comms.o
-__aeabi_fcmpun                                    C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-__aeabi_fdiv                                      C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                                                  ./src/motor.o
-                                                  ./src/encoder.o
-__aeabi_fmul                                      C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                                                  ./src/motor.o
-                                                  ./src/comms.o
-__aeabi_fneg                                      C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-__aeabi_frsub                                     C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-__aeabi_fsub                                      C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                                                  ./src/motor.o
-                                                  ./src/comms.o
-__aeabi_i2f                                       C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                                                  ./src/motor.o
-                                                  ./src/comms.o
 __aeabi_idiv0                                     C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_idiv0.o)
                                                   C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_64.o)
-__aeabi_l2f                                       C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
 __aeabi_ldivmod                                   C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_64.o)
-__aeabi_ui2f                                      C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-                                                  ./src/encoder.o
-__aeabi_ul2f                                      C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
 __aeabi_uldivmod                                  C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_64.o)
                                                   C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_qei.o)
                                                   C:\Users\danie\Documents\MCUXpressoIDE_25.6.136\lpc1769_drivers\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
 __bhs_ldivmod1                                    C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_64.o)
-__bhs_ui2f                                        C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
-__bhs_ul2f                                        C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a(float.o)
 __bss_section_table_end                           ./src/cr_startup_lpc175x_6x.o
 __data_section_table                              ./src/cr_startup_lpc175x_6x.o
 __data_section_table_end                          ./src/cr_startup_lpc175x_6x.o
@@ -1827,11 +1734,13 @@ comms_init                                        ./src/comms.o
 comms_task                                        ./src/comms.o
                                                   ./src/main.o
 data_init                                         ./src/cr_startup_lpc175x_6x.o
+encoder_debug_update                              ./src/encoder.o
+                                                  ./src/main.o
 encoder_init                                      ./src/encoder.o
                                                   ./src/main.o
-encoder_posicion_mm                               ./src/encoder.o
+encoder_posicion_centimm                          ./src/encoder.o
                                                   ./src/comms.o
-encoder_velocidad_mm_s                            ./src/encoder.o
+encoder_velocidad_centimm_s                       ./src/encoder.o
 encoder_zero                                      ./src/encoder.o
                                                   ./src/homing.o
 g_pfnVectors                                      ./src/cr_startup_lpc175x_6x.o
@@ -1849,7 +1758,7 @@ motor_busy                                        ./src/motor.o
                                                   ./src/homing.o
 motor_dir                                         ./src/motor.o
                                                   ./src/limit_switches.o
-motor_goto_mm                                     ./src/motor.o
+motor_goto_centimm                                ./src/motor.o
                                                   ./src/comms.o
 motor_goto_steps                                  ./src/motor.o
 motor_init                                        ./src/motor.o
@@ -1859,7 +1768,7 @@ motor_jog                                         ./src/motor.o
 motor_move                                        ./src/motor.o
                                                   ./src/homing.o
 motor_position                                    ./src/motor.o
-motor_position_mm                                 ./src/motor.o
+motor_position_centimm                            ./src/motor.o
                                                   ./src/comms.o
 motor_set_max_speed                               ./src/motor.o
                                                   ./src/main.o
