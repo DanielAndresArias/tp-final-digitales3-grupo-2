@@ -58,7 +58,7 @@ static volatile uint32_t vmax       = V_MAX; /* velocidad de crucero (la maneja 
 static volatile uint8_t  pulseHigh  = 0;
 static volatile uint8_t  moveDir    = DIR_TO_MAX;  /* sentido del movimiento actual */
 static volatile uint8_t  decel      = 0;
-static volatile uint8_t  jogMode    = 0;   /* 1 = velocidad constante (homing)  */
+static volatile uint8_t  jogMode    = 0;   /* 1 = jog (rampa de arranque, luego constante) */
 
 /* ---------- Prototipos privados ---------- */
 static void motor_configPins(void);
@@ -126,8 +126,8 @@ void motor_jog(uint8_t dir) {
     moveDir = dir;
     applyDir(dir);
 
-    jogMode   = 1;                  /* velocidad constante, sin rampa */
-    vel_fp    = V_HOME_FP;
+    jogMode   = 1;                  /* jog con rampa de arranque, luego constante */
+    vel_fp    = V_START_FP;         /* arranca lento y acelera hasta V_HOME (no saltar) */
     interval  = TICKS_NUM / vel_fp;
     tickCnt   = 0;
     stepsToGo = JOG_STEPS;          /* "infinito": solo lo frena un tope o motor_stop() */
@@ -204,11 +204,20 @@ void SysTick_Handler(void) {
     position += (moveDir == DIR_TO_MAX) ? 1 : -1;
 
     if (jogMode) {
-        return;                          /* velocidad constante: no se toca la rampa */
+        /* Rampa de arranque tambien en jog/homing: acelera desde V_START hasta
+           V_HOME y se queda ahi, asi no se traba si V_HOME es alto. Sin decel:
+           al tocar el tope, motor_stop() lo frena en seco (es lo que queremos). */
+        if (vel_fp < V_HOME_FP) {
+            vel_fp += ACCEL_NUM / vel_fp;
+            if (vel_fp > V_HOME_FP) vel_fp = V_HOME_FP;
+            interval = TICKS_NUM / vel_fp;
+            if (interval < 2) interval = 2;
+        }
+        return;                          /* en jog no hay deceleracion ni pot */
     }
 
     /* --- Rampa trapezoidal, todo entero en punto fijo Q8 --- */
-    uint32_t vmax_fp = vmax * VSCALE;    /* velocidad de crucero del pot, escalada */
+    volatile uint32_t vmax_fp = vmax * VSCALE;    /* velocidad de crucero del pot, escalada */
 
     if (decel) {                                 /* deceleracion */
         vel_fp -= ACCEL_NUM / vel_fp;

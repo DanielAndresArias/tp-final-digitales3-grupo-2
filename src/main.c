@@ -37,6 +37,7 @@ int main(void) {
         motor_set_max_speed(pot_get_speed());   /* velocidad segun el potenciometro */
         comms_task();                           /* procesa comandos UART (ir a X mm) */
         encoder_debug_update();                 /* DEBUG: refresca dbg_qeipos y demas */
+        pot_debug_update();                     /* DEBUG: refresca el estado del ADC/DMA */
     }
     return 0;
 }
