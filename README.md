@@ -1,7 +1,7 @@
 CONTROL DE AXIS-LPC1769
 Asignatura: Electrónica Digital III — Universidad Nacional de Córdoba
 
-Integrantes: Adriel Omar Scheffer, Daniel Arias
+Integrantes: Adriel Omar Scheffer, Daniel Andres Arias
 
 Profesor: Marcos Javier Blasco
 
@@ -30,7 +30,7 @@ Resolución de posición (encoder, 4X)0.00025 mm/cuenta
 
 Herramientas y Entorno de Desarrollo
 IDEMCUXpresso IDE v11.8SDK / Biblioteca de periféricosLPCOpen v2.10CompiladorARM GCC (incluido en MCUXpresso)
-comunicacion UART:
+
 
 Periféricos del LPC1769 Utilizados
 QEI (Quadrature Encoder Interface): lectura de posición absoluta acumulada y velocidad angular del encoder ISC3806. Configurado en modo cuadratura 4X con timer de captura de velocidad cada 10ms.
@@ -39,12 +39,6 @@ SysTick: base de tiempo de 100µs para la generación de pulsos STEP al driver A
 UART: comunicación serie con la PC a 115200 baudios para recepción de comandos y transmisión de telemetría (posición, velocidad, RPM).
 NVIC: gestión de prioridades de interrupción. SysTick configurado en prioridad máxima para garantizar el timing del generador de pasos.
 GPIO: control de señales STEP/DIR hacia el A4988 y lectura de finales de carrera.
-
-Estrategia de Concurrencia ((()))
-El sistema no utiliza RTOS. La concurrencia se resuelve mediante un esquema de superloop con interrupción periódica:
-La interrupción del SysTick (cada 100µs) tiene prioridad máxima y se encarga exclusivamente de la generación de pulsos STEP y el cálculo de la rampa trapezoidal. Es la tarea de tiempo crítico del sistema.
-El loop principal se ocupa de las tareas no críticas en tiempo: lectura del ADC, procesamiento de comandos UART y actualización de la telemetría. Al ser tareas de baja frecuencia (escala de milisegundos) no interfieren con el timing del motor.
-Las variables compartidas entre la ISR y el loop principal están declaradas como volatile para evitar optimizaciones incorrectas del compilador.
 
 Proceso de Integración y Desarrollo
 Etapa 1 — Motor: se validó el generador de pasos y la rampa trapezoidal de forma aislada, verificando que el NEMA-17 no perdiera pasos en arranque y frenado a distintas velocidades.
