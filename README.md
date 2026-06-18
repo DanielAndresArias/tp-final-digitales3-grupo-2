@@ -11,7 +11,7 @@ Profesor: Marcos Javier Blasco
 
 AXIS-LPC1769 es un sistema de **posicionamiento lineal de un eje**, controlado desde una PC, construido sobre la placa **LPC1769** (Cortex-M3).
 
-Un motor paso a paso **NEMA-17**, manejado por un driver **A4988**, hace girar una **varilla roscada de 1 mm/vuelta**. Sobre la varilla, una tuerca guiada por una segunda varilla paralela (que impide que gire) se desplaza linealmente: cuando el motor gira, la tuerca avanza o retrocede. En el extremo opuesto de la varilla, un **encoder incremental óptico ISC3806 (1000 PPR)** leído por el periférico **QEI** entrega una medición independiente de la posición real, que sirve como verificación del lazo abierto.
+Un motor paso a paso **NEMA-17**, manejado por un driver **A4988**, hace girar una **varilla roscada de 1 mm/vuelta**. Sobre la varilla, dos tuercas conectadas a un cabezal de impresora guiado por una segunda varilla paralela se desplaza linealmente: cuando el eje del motor gira, la tuerca avanza o retrocede. En el extremo opuesto de la varilla, un **encoder incremental óptico ISC3806 (1000 PPR)** leído por el periférico **QEI** entrega una medición independiente de la posición real, que sirve como verificación del lazo abierto.
 
 En ambos extremos del recorrido hay **finales de carrera** que protegen la mecánica; uno de ellos define el **cero** del sistema. Al arrancar, una rutina de **homing** lleva la tuerca contra ese cero y fija la referencia.
 
@@ -85,7 +85,7 @@ El **lazo es abierto** (el motor no se corrige con el encoder en tiempo real), p
 | Compilador | ARM GCC (Redlib, sin semihosting) |
 | App de PC | React + Vite + Web Serial API (Chrome/Edge) |
 
-> La biblioteca de periféricos **no es LPCOpen**: es una refactorización de la `CMSISv2p00_LPC17xx` con APIs estandarizadas. El módulo QEI conserva la API original (no fue refactorizado), por eso convive con la nueva.
+> La biblioteca de periféricos **no es LPCOpen**: es una refactorización de la `CMSISv2p00_LPC17xx` con drivers estandarizadas realizadas por David Trujillo. El módulo QEI conserva los drivers originales (no fue refactorizado), por eso convive con la nueva.
 
 ---
 
