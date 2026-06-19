@@ -50,9 +50,9 @@ El **lazo es abierto** (el motor no se corrige con el encoder en tiempo real), p
 
 ## Gifs de demostración
 
-![gif1](https://github.com/DanielAndresArias/tp-final-digitales3-grupo-2/gif1.gif)
-![gif2](https://github.com/DanielAndresArias/tp-final-digitales3-grupo-2/gif2.gif)
-![gif3](https://github.com/DanielAndresArias/tp-final-digitales3-grupo-2/gif3.gif)
+![gif1](gif1.gif)
+![gif2](gif2.gif)
+![gif3](gif3.gif)
 
 ## Especificaciones eléctricas
 
