@@ -44,6 +44,10 @@ El **lazo es abierto** (el motor no se corrige con el encoder en tiempo real), p
 
 ---
 
+##Esquema
+
+![Esquema_proyecto](esquema.jpeg)
+
 ## Interfaz Gráfica
 
 ![Interfaz Gráfica](interfaz-gráfica-controlador.png)
